@@ -3,241 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#2563eb">
-<title>行业认知提升工作台</title>
-<!-- 本地单文件工作台：全内联零外链，数据存储于浏览器 localStorage -->
+<meta name="theme-color" content="#1e3a5f">
+<title>行业认知简报系统</title>
+<!-- 单文件 / 零外链 / 数据存于浏览器 localStorage / 简报内容由 WorkBuddy 供稿 -->
 <style>
 :root{
-  --bg:#f4f6fb; --card:#ffffff; --line:#e6eaf2; --line-2:#eef1f7;
-  --ink:#1e293b; --ink-2:#5b667a; --ink-3:#93a0b5;
-  --blue:#2563eb; --blue-d:#1d4ed8; --blue-l:#eef4ff;
-  --red:#dc2626; --red-l:#fef2f2; --green:#16a34a; --green-l:#f0fdf4;
-  --amber:#d97706; --amber-l:#fffbeb; --violet:#7c3aed; --violet-l:#f5f3ff;
-  --teal:#0d9488; --teal-l:#f0fdfa;
-  --r:14px; --r-s:10px; --sh:0 1px 2px rgba(16,24,40,.05),0 4px 14px rgba(16,24,40,.05);
+  --bg:#f6f7f9; --card:#fff; --line:#e5e9ef; --line2:#eef1f5;
+  --ink:#1a2434; --ink2:#566377; --ink3:#95a0b2;
+  --navy:#1e3a5f; --navy-d:#152b48; --blue:#2563eb; --blue-l:#eef4ff;
+  --teal:#0d9488; --teal-l:#eefbf8; --amber:#b45309; --amber-l:#fff7ed;
+  --violet:#6d28d9; --violet-l:#f5f3ff; --rose:#be123c; --rose-l:#fff1f2;
+  --green:#15803d; --green-l:#f0fdf4;
+  --r:14px; --rs:10px; --sh:0 1px 2px rgba(16,24,40,.04),0 6px 18px rgba(16,24,40,.05);
   --safe:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
-  background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
-}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font-family:inherit;font-size:16px;color:var(--ink)}
 button{cursor:pointer;border:none;background:none}
 a{color:var(--blue);text-decoration:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 16px 120px}
+svg{display:block}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px 130px}
 
-/* ---------- Header ---------- */
-.topbar{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
-.topbar-in{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
-.brand-logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;flex:none}
-.brand-logo svg{width:22px;height:22px}
-.brand h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.2px}
-.brand p{font-size:12px;margin:0;color:var(--ink-3)}
-.hdr-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 14px;border-radius:var(--r-s);font-size:14px;font-weight:600;transition:.16s;border:1px solid transparent;white-space:nowrap}
-.btn svg{width:16px;height:16px;flex:none}
-.btn-ghost{background:var(--card);border-color:var(--line);color:var(--ink-2)}
-.btn-ghost:hover{border-color:#cbd5e1;color:var(--ink)}
-.btn-primary{background:var(--blue);color:#fff}
-.btn-primary:hover{background:var(--blue-d)}
-.btn-danger{background:var(--red-l);color:var(--red)}
-.btn-sm{min-height:36px;padding:0 11px;font-size:13px;border-radius:8px}
-.btn-block{width:100%}
-.sync-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);padding:6px 10px;border-radius:99px}
-.sync-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none}
+/* topbar */
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:40;box-shadow:0 2px 12px rgba(30,58,95,.18)}
+.topbar-in{max-width:1000px;margin:0 auto;padding:13px 16px;display:flex;align-items:center;gap:12px}
+.logo{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex:none}
+.logo svg{width:21px;height:21px}
+.brand-t{font-size:16px;font-weight:700;letter-spacing:.3px}
+.brand-s{font-size:11.5px;color:#a9c2dd}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.pill-profile{font-size:12px;background:rgba(255,255,255,.12);padding:6px 11px;border-radius:99px;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill-date{font-size:11.5px;color:#a9c2dd;white-space:nowrap}
 
-/* ---------- Backup hint ---------- */
-.backup-hint{display:none;margin:14px 0 0;background:var(--amber-l);border:1px solid #fde68a;color:#92400e;border-radius:var(--r-s);padding:10px 14px;font-size:13px;align-items:center;gap:10px}
-.backup-hint.show{display:flex}
-.backup-hint button{margin-left:auto;color:#92400e;font-weight:700;text-decoration:underline;font-size:13px}
-
-/* ---------- Nav tabs ---------- */
-.tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:5px;margin:18px 0;box-shadow:var(--sh)}
-.tab{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink-2);transition:.16s}
-.tab svg{width:18px;height:18px}
+/* tabs */
+.tabs{display:flex;gap:4px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:5px;margin:18px 0 16px;box-shadow:var(--sh)}
+.tab{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;min-height:45px;border-radius:9px;font-size:13.5px;font-weight:600;color:var(--ink2);transition:.16s}
+.tab svg{width:17px;height:17px}
 .tab:hover{background:var(--bg)}
-.tab.active{background:var(--blue);color:#fff}
+.tab.active{background:var(--navy);color:#fff}
 .tab.active svg{stroke:#fff}
 
-/* ---------- Cards / sections ---------- */
 .view{display:none;animation:fade .25s ease}
 .view.active{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px;margin-bottom:16px}
-.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
-.sec-head h2{font-size:16px;margin:0;font-weight:700;display:flex;align-items:center;gap:8px}
-.sec-head h2 svg{width:19px;height:19px;color:var(--blue)}
-.sec-head .sub{font-size:12px;color:var(--ink-3);font-weight:400}
-.sec-head .right{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.muted{color:var(--ink-3)}
-.empty{text-align:center;padding:30px 12px;color:var(--ink-3);font-size:14px}
-.empty svg{width:38px;height:38px;opacity:.5;margin-bottom:8px}
 
-/* ---------- Today ---------- */
-.today-card{border-left:4px solid var(--blue)}
-.today-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2)}
-.today-item:last-child{border-bottom:none}
-.today-check{width:26px;height:26px;border-radius:8px;border:2px solid #cbd5e1;flex:none;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:.16s}
-.today-check:hover{border-color:var(--blue);background:var(--blue-l)}
-.today-check svg{width:15px;height:15px;color:#fff;opacity:0}
-.today-check.done{background:var(--green);border-color:var(--green)}
-.today-check.done svg{opacity:1}
-.today-main{flex:1;min-width:0}
-.today-title{font-weight:600;font-size:14px;word-break:break-word}
-.today-title.done{text-decoration:line-through;color:var(--ink-3)}
-.today-meta{font-size:12px;color:var(--ink-3);display:flex;gap:8px;flex-wrap:wrap;margin-top:3px;align-items:center}
-.overdue{color:var(--red)!important;font-weight:700}
-.today-act{display:flex;gap:6px;flex:none}
-.icon-btn{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:.16s}
-.icon-btn:hover{background:var(--bg);color:var(--ink)}
-.icon-btn svg{width:16px;height:16px}
-.icon-btn.del:hover{background:var(--red-l);color:var(--red)}
-
-/* ---------- Chips / tags ---------- */
-.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--bg);color:var(--ink-2);border:1px solid var(--line)}
-.chip.blue{background:var(--blue-l);color:var(--blue);border-color:#dbeafe}
-.chip.red{background:var(--red-l);color:var(--red);border-color:#fee2e2}
+/* common */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px;margin-bottom:14px}
+.sec{display:flex;align-items:center;gap:9px;margin-bottom:14px;flex-wrap:wrap}
+.sec h2{font-size:16px;margin:0;font-weight:700;display:flex;align-items:center;gap:8px}
+.sec h2 svg{width:18px;height:18px;color:var(--navy)}
+.sec .sub{font-size:12px;color:var(--ink3);font-weight:400}
+.sec .right{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:0 13px;border-radius:9px;font-size:13.5px;font-weight:600;transition:.16s;border:1px solid transparent;white-space:nowrap}
+.btn svg{width:15px;height:15px}
+.btn-g{background:#fff;border-color:var(--line);color:var(--ink2)}
+.btn-g:hover{border-color:#c9d2de;color:var(--ink)}
+.btn-p{background:var(--navy);color:#fff}
+.btn-p:hover{background:var(--navy-d)}
+.btn-sm{min-height:34px;padding:0 10px;font-size:12.5px;border-radius:7px}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--bg);color:var(--ink2);border:1px solid var(--line)}
+.chip.blue{background:var(--blue-l);color:var(--blue);border-color:#dbe7ff}
+.chip.teal{background:var(--teal-l);color:var(--teal);border-color:#cceeda}
+.chip.violet{background:var(--violet-l);color:var(--violet);border-color:#e5ddff}
+.chip.amber{background:var(--amber-l);color:var(--amber);border-color:#ffedd5}
+.chip.rose{background:var(--rose-l);color:var(--rose);border-color:#ffe0e6}
 .chip.green{background:var(--green-l);color:var(--green);border-color:#dcfce7}
-.chip.amber{background:var(--amber-l);color:var(--amber);border-color:#fef3c7}
-.chip.violet{background:var(--violet-l);color:var(--violet);border-color:#ede9fe}
-.chip.teal{background:var(--teal-l);color:var(--teal);border-color:#ccfbf1}
-.chip.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
-.tagbtn{cursor:pointer;user-select:none}
-.tagbtn:hover{border-color:var(--blue);color:var(--blue)}
+.muted{color:var(--ink3)}
+.empty{text-align:center;padding:40px 16px;color:var(--ink3)}
+.empty svg{width:40px;height:40px;opacity:.45;margin:0 auto 10px}
 
-/* ---------- Feed ---------- */
-.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.search{flex:1;min-width:180px;position:relative}
-.search input{width:100%;min-height:44px;border:1px solid var(--line);border-radius:var(--r-s);padding:0 14px 0 38px;background:var(--card);outline:none}
-.search input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-l)}
-.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--ink-3)}
-.fsel{min-height:44px;border:1px solid var(--line);border-radius:var(--r-s);padding:0 10px;background:var(--card);outline:none;max-width:150px}
-.fsel:focus{border-color:var(--blue)}
-.item{display:flex;gap:12px;padding:14px;border:1px solid var(--line);border-radius:var(--r-s);margin-bottom:10px;transition:.16s;background:var(--card)}
-.item:hover{border-color:#cbd5e1;box-shadow:var(--sh)}
-.item.is-read{opacity:.62}
-.item-ic{width:38px;height:38px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center}
-.item-ic svg{width:19px;height:19px}
-.item-body{flex:1;min-width:0}
-.item-title{font-weight:650;font-size:14.5px;word-break:break-word}
-.item-title a{color:var(--ink)}
-.item-title a:hover{color:var(--blue)}
-.item-sum{font-size:13px;color:var(--ink-2);margin-top:3px;word-break:break-word}
-.item-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:8px}
-.item-acts{display:flex;flex-direction:column;gap:4px;flex:none}
+/* day/week switch */
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:3px}
+.seg button{min-height:34px;padding:0 15px;border-radius:7px;font-size:13px;font-weight:600;color:var(--ink2)}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(16,24,40,.1)}
 
-/* ---------- Knowledge ---------- */
-.kb-tabs{display:flex;gap:6px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:10px;flex-wrap:wrap}
-.kb-tab{padding:8px 14px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--ink-2)}
-.kb-tab.active{background:var(--violet-l);color:var(--violet)}
-.card-note{background:linear-gradient(180deg,#fff,#fbfcff);border:1px solid var(--line);border-radius:var(--r-s);padding:14px;margin-bottom:10px}
-.note-title{font-weight:700;font-size:14.5px;display:flex;align-items:flex-start;gap:8px}
-.note-title svg{width:17px;height:17px;color:var(--violet);flex:none;margin-top:2px}
-.note-body{font-size:13.5px;color:var(--ink-2);margin-top:6px;white-space:pre-wrap;word-break:break-word}
-.flashcard{background:linear-gradient(135deg,#f5f3ff,#eef4ff);border:1px solid #ddd6fe;border-radius:var(--r);padding:18px;margin-bottom:12px;position:relative;min-height:120px}
-.fc-q{font-weight:700;font-size:15px;color:var(--violet)}
-.fc-a{font-size:13.5px;color:var(--ink-2);margin-top:10px;display:none;white-space:pre-wrap}
-.flashcard.open .fc-a{display:block}
-.fc-actions{display:flex;gap:8px;margin-top:12px}
-.tag-cloud{display:flex;gap:8px;flex-wrap:wrap}
-.tag-cloud .chip{font-size:13px;padding:6px 13px;cursor:pointer}
-.tag-cloud .chip b{font-weight:700;margin-left:3px}
+/* insight card */
+.brief{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:14px;overflow:hidden}
+.brief-hd{padding:16px 18px 0}
+.brief-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.score{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--navy);background:var(--blue-l);padding:3px 9px;border-radius:99px}
+.brief-title{font-size:16.5px;font-weight:750;line-height:1.45;margin:0 0 9px;letter-spacing:.1px}
+.oneliner{font-size:14px;color:var(--ink);background:linear-gradient(90deg,#f8fafc,#fff);border-left:3px solid var(--navy);padding:9px 12px;border-radius:0 8px 8px 0;margin-bottom:10px}
+.why{font-size:11.5px;color:var(--violet);background:var(--violet-l);border-radius:6px;padding:5px 9px;display:inline-flex;gap:5px;align-items:center;margin-bottom:10px}
+.why svg{width:13px;height:13px}
+.brief-body{padding:0 18px}
+.detail{border-top:1px solid var(--line2);padding:11px 0}
+.detail-lbl{font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:.5px;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.detail-lbl svg{width:13px;height:13px}
+.findings{margin:0;padding-left:17px;font-size:13.3px;color:var(--ink2)}
+.findings li{margin:3px 0}
+.impact-txt,.action-txt{font-size:13.3px;color:var(--ink2);margin:0}
+.action-txt{color:var(--ink)}
+.evidence{background:var(--bg);border-radius:8px;padding:9px 11px;font-size:11.8px;color:var(--ink2);margin-top:4px}
+.evidence a{font-weight:600;word-break:break-all}
+.conf{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px}
+.conf.hi{background:var(--green-l);color:var(--green)}
+.conf.md{background:var(--amber-l);color:var(--amber)}
+.brief-ft{padding:12px 18px;background:#fbfcfd;border-top:1px solid var(--line2);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.fb{min-height:32px;padding:0 10px;border-radius:7px;font-size:12px;font-weight:600;color:var(--ink2);border:1px solid var(--line);background:#fff;display:inline-flex;align-items:center;gap:4px}
+.fb svg{width:13px;height:13px}
+.fb:hover{border-color:#c9d2de}
+.fb.on-useful{background:var(--green-l);color:var(--green);border-color:#bbf7d0}
+.fb.on-deep{background:var(--blue-l);color:var(--blue);border-color:#bfdbfe}
+.fb.on-irrelevant{background:var(--rose-l);color:var(--rose);border-color:#fecdd3}
+.fb.on-save{background:var(--amber-l);color:var(--amber);border-color:#fed7aa}
+.ft-right{margin-left:auto;display:flex;align-items:center;gap:5px}
+.note-toggle{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer}
+.note-box{display:none;padding:0 18px 14px}
+.note-box.show{display:block}
+.note-box textarea{width:100%;min-height:64px;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:13px;resize:vertical;outline:none}
+.note-box textarea:focus{border-color:var(--blue)}
 
-/* ---------- Review / stats ---------- */
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r-s);padding:14px;box-shadow:var(--sh)}
-.stat .n{font-size:26px;font-weight:800;line-height:1.1}
-.stat .l{font-size:12px;color:var(--ink-3);margin-top:4px}
-.stat .d{font-size:11px;margin-top:4px}
-.stat.blue .n{color:var(--blue)} .stat.green .n{color:var(--green)} .stat.violet .n{color:var(--violet)} .stat.amber .n{color:var(--amber)}
-.chart-box{background:var(--card);border:1px solid var(--line);border-radius:var(--r-s);padding:16px}
-.chart-box h3{font-size:14px;margin:0 0 12px;font-weight:700}
-.chart-box svg{width:100%;height:auto;display:block;overflow:visible}
-.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--ink-2)}
-.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:5px}
-.review-item{border-left:3px solid var(--violet);padding:10px 14px;background:var(--violet-l);border-radius:0 var(--r-s) var(--r-s) 0;margin-bottom:10px}
-.review-item .rd{font-size:12px;color:var(--violet);font-weight:700;margin-bottom:4px}
-.review-item p{margin:3px 0;font-size:13.5px;color:var(--ink-2)}
-.reminder{background:var(--amber-l);border:1px solid #fde68a;border-radius:var(--r-s);padding:12px 14px;font-size:13px;color:#92400e;display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.reminder svg{width:18px;height:18px;flex:none}
+/* knowledge */
+.kb-track{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.kb-tab{padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink2);background:#fff;border:1px solid var(--line)}
+.kb-tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.concept{border:1px solid var(--line);border-radius:var(--rs);padding:13px 14px;margin-bottom:10px;background:#fff}
+.concept-hd{display:flex;align-items:flex-start;gap:9px}
+.concept-name{font-size:14.5px;font-weight:700;flex:1}
+.concept-def{font-size:13.2px;color:var(--ink2);margin-top:6px}
+.concept-why{font-size:12.5px;color:var(--teal);background:var(--teal-l);border-radius:6px;padding:6px 9px;margin-top:8px}
+.mastery{width:26px;height:26px;border-radius:7px;border:2px solid #cbd5e1;flex:none;display:flex;align-items:center;justify-content:center}
+.mastery svg{width:14px;height:14px;color:#fff;opacity:0}
+.mastery.done{background:var(--green);border-color:var(--green)}
+.mastery.done svg{opacity:1}
+.timeline-item{display:flex;gap:12px;padding:0 0 16px}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--navy);flex:none;margin-top:6px;box-shadow:0 0 0 4px var(--blue-l)}
+.tl-date{font-size:11.5px;color:var(--ink3);font-weight:600;margin-bottom:3px}
+.tl-title{font-size:14px;font-weight:650}
 
-/* ---------- Progress ring ---------- */
-.ring-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.ring{width:120px;height:120px;flex:none}
-.ring-info{flex:1;min-width:160px}
-.ring-info .big{font-size:22px;font-weight:800}
-.ring-info .sm{font-size:12.5px;color:var(--ink-2);margin-top:4px}
-.hbar{height:9px;border-radius:99px;background:var(--line-2);overflow:hidden;margin-top:6px}
-.hbar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--violet));transition:width .5s}
-.prog-line{margin-top:12px}
-.prog-line .pl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-2)}
+/* profile */
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink2);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;min-height:44px;border:1px solid var(--line);border-radius:9px;padding:10px 12px;outline:none;background:#fff}
+.field textarea{min-height:72px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-l)}
+.field .hint{font-size:11px;color:var(--ink3);margin-top:4px}
+.focus-tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;background:var(--blue-l);color:var(--blue);padding:5px 10px;border-radius:99px;margin:0 6px 6px 0}
+.focus-tag b{cursor:pointer;font-size:14px;line-height:1}
+.pref-row{display:flex;gap:8px;flex-wrap:wrap}
+.pref-opt{padding:8px 13px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;font-weight:600;color:var(--ink2);cursor:pointer;background:#fff}
+.pref-opt.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.explain{background:var(--violet-l);border:1px solid #e5ddff;border-radius:10px;padding:13px 15px;font-size:12.8px;color:#4c1d95}
+.explain b{display:block;margin-bottom:5px}
 
-/* ---------- Drawer / modal ---------- */
-.overlay{position:fixed;inset:0;background:rgba(15,23,42,.42);z-index:90;display:none;align-items:flex-end;justify-content:center}
+/* review */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--rs);padding:13px;text-align:center}
+.stat .n{font-size:24px;font-weight:800;line-height:1.1;color:var(--navy)}
+.stat .l{font-size:11.5px;color:var(--ink3);margin-top:3px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:12.5px}
+.bar-row .lbl{width:88px;flex:none;color:var(--ink2);font-weight:600}
+.bar-track{flex:1;height:10px;background:var(--line2);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;transition:width .5s}
+.bar-row .v{width:34px;text-align:right;font-weight:700;color:var(--ink2)}
+.learn-note{font-size:12.5px;color:var(--ink2);background:var(--amber-l);border-radius:8px;padding:10px 12px;margin-top:6px}
+
+/* modal / drawer */
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.44);z-index:90;display:none;align-items:flex-end;justify-content:center}
 .overlay.show{display:flex}
 @media(min-width:769px){.overlay.show{align-items:center}}
-.drawer{background:var(--card);width:100%;max-width:560px;border-radius:20px 20px 0 0;padding:22px 20px calc(22px + var(--safe));max-height:90vh;overflow-y:auto;animation:up .25s ease}
+.drawer{background:#fff;width:100%;max-width:620px;border-radius:20px 20px 0 0;padding:22px 20px calc(22px + var(--safe));max-height:92vh;overflow-y:auto;animation:up .25s ease}
 @media(min-width:769px){.drawer{border-radius:18px}}
-@keyframes up{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
-.drawer h2{margin:0 0 16px;font-size:18px;display:flex;align-items:center;gap:8px}
-.drawer h2 svg{width:20px;height:20px;color:var(--blue)}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink-2)}
-.field input,.field select,.field textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:var(--r-s);padding:10px 12px;background:var(--card);outline:none}
-.field textarea{min-height:76px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-l)}
-.hint{font-size:11.5px;color:var(--ink-3);margin-top:4px}
+@keyframes up{from{transform:translateY(26px);opacity:.6}to{transform:none;opacity:1}}
+.drawer h2{margin:0 0 16px;font-size:18px}
 .drawer-acts{display:flex;gap:10px;margin-top:18px}
 .drawer-acts .btn{flex:1}
-
-/* ---------- Modal ---------- */
-.modal{background:var(--card);width:calc(100% - 32px);max-width:440px;border-radius:18px;padding:24px 20px;animation:up .2s ease}
-.modal h3{margin:0 0 8px;font-size:17px}
-.modal p{color:var(--ink-2);font-size:14px;margin:0 0 18px}
-.modal-acts{display:flex;gap:10px}
-.modal-acts .btn{flex:1}
-
-/* ---------- Toast ---------- */
-.toast{position:fixed;left:50%;bottom:calc(30px + var(--safe));transform:translateX(-50%) translateY(20px);background:#1e293b;color:#fff;padding:11px 20px;border-radius:99px;font-size:13.5px;font-weight:600;z-index:120;opacity:0;pointer-events:none;transition:.28s;box-shadow:0 8px 24px rgba(0,0,0,.2);white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+.toast{position:fixed;left:50%;bottom:calc(28px + var(--safe));transform:translateX(-50%) translateY(16px);background:var(--navy);color:#fff;padding:11px 20px;border-radius:99px;font-size:13px;font-weight:600;z-index:120;opacity:0;pointer-events:none;transition:.26s;box-shadow:0 8px 24px rgba(0,0,0,.2);max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.footnote{text-align:center;font-size:11px;color:var(--ink3);padding:6px 0 16px}
 
-/* ---------- Floating add ---------- */
-.fab{position:fixed;right:18px;bottom:calc(24px + var(--safe));width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;box-shadow:0 8px 22px rgba(37,99,235,.42);display:flex;align-items:center;justify-content:center;z-index:50}
-.fab svg{width:26px;height:26px}
-.fab:hover{background:var(--blue-d)}
-
-/* ---------- Footer note ---------- */
-.footnote{text-align:center;font-size:11.5px;color:var(--ink-3);padding:10px 0 20px}
-
-/* ---------- Responsive ---------- */
-@media(max-width:860px){
-  .stat-grid{grid-template-columns:repeat(2,1fr)}
-  .grid-3{grid-template-columns:1fr 1fr}
-}
+/* responsive */
+@media(max-width:860px){.stat-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
-  .wrap{padding:0 12px 130px}
-  .topbar-in{padding:10px 12px}
-  .brand h1{font-size:15px}
-  .brand p{display:none}
-  .hdr-tools .btn span{display:none}
-  .hdr-tools .btn{width:44px;padding:0}
-  .sync-pill{font-size:11px;padding:5px 8px}
-  .grid-2,.grid-3{grid-template-columns:1fr}
-  .tabs{position:fixed;left:0;right:0;bottom:0;border-radius:0;margin:0;border:none;border-top:1px solid var(--line);padding:6px 6px calc(6px + var(--safe));z-index:45;box-shadow:0 -2px 14px rgba(16,24,40,.06)}
-  .tab{flex-direction:column;gap:2px;min-height:52px;font-size:11px;border-radius:9px}
-  .tab svg{width:20px;height:20px}
-  .sec-head .right{width:100%;margin-left:0}
-  .sec-head .right .btn{flex:1}
-  .item-acts{flex-direction:row}
-  .ring{width:100px;height:100px}
-  .fsel{max-width:none;flex:1}
-  /* 悬浮按钮抬高，避免遮挡底部 Tab 栏 */
-  .fab{bottom:calc(84px + var(--safe));right:16px;width:52px;height:52px}
+  .wrap{padding:0 12px 120px}
+  .topbar-in{padding:11px 12px}
+  .brand-t{font-size:14.5px}.pill-date{display:none}
+  .pill-profile{font-size:11px;max-width:130px}
+  .tabs{position:fixed;left:0;right:0;bottom:0;border-radius:0;margin:0;border:none;border-top:1px solid var(--line);padding:5px 5px calc(5px + var(--safe));z-index:45;box-shadow:0 -2px 14px rgba(16,24,40,.06)}
+  .tab{flex-direction:column;gap:2px;min-height:50px;font-size:10.5px}
+  .tab svg{width:19px;height:19px}
+  .sec .right{width:100%;margin-left:0}
+  .brief-title{font-size:15.5px}
+  .fb{flex:1;justify-content:center;min-width:0}
 }
 </style>
 </head>
@@ -245,836 +195,524 @@ a{color:var(--blue);text-decoration:none}
 
 <header class="topbar">
   <div class="topbar-in">
-    <div class="brand">
-      <div class="brand-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
-      </div>
-      <div>
-        <h1>行业认知提升工作台</h1>
-        <p id="brand-sub">你的行业 · 你的岗位 · 持续进化</p>
-      </div>
+    <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+    <div>
+      <div class="brand-t">行业认知简报</div>
+      <div class="brand-s" id="brand-sub">跟进 · 总结 · 反馈 · 推荐</div>
     </div>
-    <div class="hdr-tools">
-      <span class="sync-pill"><span class="sync-dot"></span><span id="sync-text">本地已保存</span></span>
-      <button class="btn btn-ghost btn-sm" data-action="export-json" title="导出 JSON 备份"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>导出</span></button>
-      <button class="btn btn-ghost btn-sm" data-action="import-json" title="导入恢复"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg><span>导入</span></button>
-      <button class="btn btn-ghost btn-sm" data-action="open-settings" title="设置"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg><span>设置</span></button>
+    <div class="hdr-right">
+      <span class="pill-profile" id="pill-profile"></span>
+      <span class="pill-date" id="pill-date"></span>
     </div>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="backup-hint" id="backup-hint">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
-    <span id="backup-hint-text">数据已积累一定量，建议导出一份备份</span>
-    <button data-action="export-json">立即备份</button>
-  </div>
-
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="dashboard" role="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
-      总览
-    </button>
-    <button class="tab" data-tab="feed" role="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/><circle cx="19" cy="18" r="2"/></svg>
-      信息流
-    </button>
+    <button class="tab active" data-tab="briefs" role="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>认知简报</button>
     <button class="tab" data-tab="knowledge" role="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-      知识库
-    </button>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>知识体系</button>
+    <button class="tab" data-tab="profile" role="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>我的画像</button>
     <button class="tab" data-tab="review" role="tab">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-      复盘统计
-    </button>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>闭环复盘</button>
   </nav>
 
-  <!-- ============ 总览 ============ -->
-  <section class="view active" id="view-dashboard">
-    <div class="card today-card">
-      <div class="sec-head">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>今天要处理</h2>
-        <span class="sub" id="today-date"></span>
-        <div class="right"><span class="chip blue" id="today-count">0 项待处理</span></div>
-      </div>
-      <div id="today-list"></div>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="sec-head">
-          <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4L12 3Z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17Z"/></svg>每日推荐</h2>
-          <div class="right"><button class="btn btn-ghost btn-sm" data-action="refresh-recs">换一批</button></div>
+  <!-- 认知简报 -->
+  <section class="view active" id="view-briefs">
+    <div class="card" style="padding:14px 16px">
+      <div class="sec" style="margin-bottom:10px">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="brief-heading">今日重点</span></h2>
+        <div class="right">
+          <div class="seg"><button data-horizon="daily" class="on">按日</button><button data-horizon="weekly">按周</button></div>
         </div>
-        <div id="daily-recs"></div>
       </div>
-      <div class="card">
-        <div class="sec-head">
-          <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>学习进度</h2>
-        </div>
-        <div id="progress-overview"></div>
-      </div>
+      <div id="brief-summary" style="font-size:12.5px;color:var(--ink2)"></div>
     </div>
-
-    <div class="card">
-      <div class="sec-head"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>我的定位与目标</h2>
-        <div class="right"><button class="btn btn-ghost btn-sm" data-action="open-settings">编辑设定</button></div>
-      </div>
-      <div id="profile-strip"></div>
-    </div>
+    <div id="brief-list"></div>
   </section>
 
-  <!-- ============ 信息流 ============ -->
-  <section class="view" id="view-feed">
-    <div class="card">
-      <div class="sec-head">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/></svg>信息流</h2>
-        <span class="sub" id="feed-count"></span>
-        <div class="right"><button class="btn btn-primary btn-sm" data-action="new-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>收录一条</button></div>
-      </div>
-      <div class="filters">
-        <div class="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input type="text" id="feed-search" placeholder="搜索标题、摘要、标签…">
-        </div>
-        <select class="fsel" id="feed-type"><option value="">全部类型</option></select>
-        <select class="fsel" id="feed-status"><option value="">全部状态</option><option value="unread">待读</option><option value="reading">在读</option><option value="read">已读</option></select>
-      </div>
-      <div class="filters" id="feed-tagbar"></div>
-      <div id="feed-list"></div>
-    </div>
-  </section>
-
-  <!-- ============ 知识库 ============ -->
+  <!-- 知识体系 -->
   <section class="view" id="view-knowledge">
     <div class="card">
-      <div class="sec-head">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>知识库</h2>
-        <div class="right"><button class="btn btn-primary btn-sm" data-action="new-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>新建认知卡片</button></div>
-      </div>
-      <div class="kb-tabs" id="kb-tabs">
-        <button class="kb-tab active" data-kb="cards">认知卡片</button>
-        <button class="kb-tab" data-kb="cases">公司 / 竞品案例</button>
-        <button class="kb-tab" data-kb="notes">观点笔记</button>
-        <button class="kb-tab" data-kb="tags">标签归档</button>
+      <div class="sec"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/></svg>基础 × 前沿 双轨</h2><span class="sub">扎实基础 + 前沿动态</span></div>
+      <div class="kb-track" id="kb-track">
+        <button class="kb-tab on" data-kb="foundation">基础知识体系</button>
+        <button class="kb-tab" data-kb="frontier">前沿动态追踪</button>
       </div>
       <div id="kb-panel"></div>
     </div>
   </section>
 
-  <!-- ============ 复盘统计 ============ -->
-  <section class="view" id="view-review">
-    <div id="review-reminder"></div>
-    <div class="stat-grid" id="stat-grid"></div>
-    <div class="grid-2">
-      <div class="chart-box">
-        <h3>近 7 天认知沉淀趋势</h3>
-        <div id="chart-trend"></div>
-      </div>
-      <div class="chart-box">
-        <h3>信息类型分布</h3>
-        <div id="chart-type"></div>
-      </div>
+  <!-- 我的画像 -->
+  <section class="view" id="view-profile">
+    <div class="card">
+      <div class="sec"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>个人画像与学习偏好</h2></div>
+      <form id="profile-form">
+        <div class="grid2" style="display:grid;grid-template-columns:1fr 1fr;gap:0 12px">
+          <div class="field"><label>所在行业</label><input name="industry" id="pf-industry" placeholder="如：医疗健康 / 康复医学"></div>
+          <div class="field"><label>岗位 / 角色</label><input name="role" id="pf-role" placeholder="如：医生 / 大学教授"></div>
+        </div>
+        <div class="field"><label>学习目标</label><textarea name="goal" id="pf-goal" placeholder="你想通过这套简报达成什么？"></textarea></div>
+        <div class="field"><label>关注领域（用逗号分隔，决定推荐匹配）</label><input name="focus" id="pf-focus" placeholder="脑机接口, 卒中康复, 认知障碍"><div class="hint">简报会标注"为什么推荐给你"，即命中的关注领域</div></div>
+        <div class="field"><label>内容深度偏好</label><div class="pref-row" id="pref-depth">
+          <span class="pref-opt" data-v="concise">简明摘要</span><span class="pref-opt" data-v="balanced">摘要+要点</span><span class="pref-opt" data-v="deep">深度完整</span>
+        </div></div>
+        <div class="field"><label>阅读节奏</label><div class="pref-row" id="pref-pace">
+          <span class="pref-opt" data-v="daily">每日简报</span><span class="pref-opt" data-v="weekly">每周汇总</span>
+        </div></div>
+        <div class="drawer-acts"><button type="submit" class="btn btn-p">保存画像</button><button type="button" class="btn btn-g" data-action="export">导出备份</button><button type="button" class="btn btn-g" data-action="import">导入备份</button></div>
+      </form>
+      <div class="explain" style="margin-top:16px" id="profile-explain"></div>
     </div>
-    <div class="card" style="margin-top:16px">
-      <div class="sec-head">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>复盘记录</h2>
-        <div class="right"><button class="btn btn-primary btn-sm" data-action="new-review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>写复盘</button></div>
-      </div>
-      <div id="review-list"></div>
+    <div class="card">
+      <div class="sec"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>从你的反馈中学到的偏好</h2></div>
+      <div id="learned-prefs"></div>
     </div>
   </section>
 
-  <div class="footnote">数据仅保存在本机浏览器 · 建议定期导出备份 · 单文件离线可用</div>
-</div>
-
-<button class="fab" data-action="quick-add" title="快速收录">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-</button>
-
-<!-- 设置抽屉 -->
-<div class="overlay" id="settings-overlay">
-  <div class="drawer" role="dialog" aria-modal="true" aria-label="工作台设置">
-    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82 1.65 1.65 0 0 0-1.82.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.82.33 1.65 1.65 0 0 0-1.51 1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0 1.82-.33 1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33 1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1.51-1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1 1.65 1.65 0 0 0 .33 1.82 1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>工作台设置</h2>
-    <form id="settings-form">
-      <div class="grid-2">
-        <div class="field"><label>所在行业</label><input name="industry" id="set-industry" placeholder="如：医疗健康 / 康复医学"></div>
-        <div class="field"><label>岗位 / 角色</label><input name="role" id="set-role" placeholder="如：医生 / 教授"></div>
-      </div>
-      <div class="field"><label>关注领域（用逗号分隔）</label><input name="focus" id="set-focus" placeholder="脑机接口, 卒中康复, 认知障碍"><div class="hint">用于每日推荐与关键词匹配</div></div>
-      <div class="field"><label>学习目标</label><textarea name="goal" id="set-goal" placeholder="如：每天沉淀 1 条行业认知，每周完成 1 次复盘"></textarea></div>
-      <div class="grid-2">
-        <div class="field"><label>每日推荐条数</label><input type="number" name="dailyCount" id="set-dailyCount" min="1" max="8"></div>
-        <div class="field"><label>复盘提醒周期</label><select name="reviewCycle" id="set-reviewCycle"><option value="daily">每天</option><option value="weekdays">工作日</option><option value="weekly">每周</option><option value="off">关闭</option></select></div>
-      </div>
-      <div class="drawer-acts">
-        <button type="button" class="btn btn-ghost" data-action="close-settings">取消</button>
-        <button type="submit" class="btn btn-primary">保存设置</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- 通用编辑弹窗 -->
-<div class="overlay" id="editor-overlay">
-  <div class="drawer" role="dialog" aria-modal="true">
-    <h2 id="editor-title">编辑</h2>
-    <form id="editor-form"><div id="editor-fields"></div>
-      <div class="drawer-acts">
-        <button type="button" class="btn btn-ghost" data-action="close-editor">取消</button>
-        <button type="submit" class="btn btn-primary" id="editor-submit">保存</button>
-      </div>
-    </form>
-    <button class="btn btn-danger btn-block btn-sm" id="editor-delete" style="margin-top:10px;display:none" data-action="editor-delete">删除此条</button>
-  </div>
-</div>
-
-<!-- 确认弹窗 -->
-<div class="overlay" id="confirm-overlay">
-  <div class="modal" role="alertdialog" aria-modal="true">
-    <h3 id="confirm-title">确认操作</h3>
-    <p id="confirm-msg"></p>
-    <div class="modal-acts">
-      <button class="btn btn-ghost" data-action="confirm-cancel">取消</button>
-      <button class="btn btn-danger" data-action="confirm-ok">确认</button>
+  <!-- 闭环复盘 -->
+  <section class="view" id="view-review">
+    <div class="stat-row" id="stat-row"></div>
+    <div class="card">
+      <div class="sec"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="12" y="6" width="3" height="12"/><rect x="17" y="13" width="3" height="5"/></svg>反馈分布</h2><span class="sub">你的互动如何重塑推荐</span></div>
+      <div id="feedback-chart"></div>
     </div>
-  </div>
+    <div class="card">
+      <div class="sec"><h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="M22 4 12 14.01l-3-3"/></svg>闭环状态</h2></div>
+      <div id="loop-status"></div>
+    </div>
+  </section>
+
+  <div class="footnote" id="footnote"></div>
 </div>
 
 <input type="file" id="import-file" accept=".json,application/json" style="display:none">
+<div class="overlay" id="confirm-overlay"><div class="card" style="max-width:400px;margin:auto"><h3 id="cf-title" style="margin:0 0 8px;font-size:17px">确认</h3><p id="cf-msg" style="font-size:13.5px;color:var(--ink2);margin:0 0 16px"></p><div style="display:flex;gap:10px"><button class="btn btn-g" style="flex:1" data-action="cf-cancel">取消</button><button class="btn btn-p" style="flex:1" data-action="cf-ok">确认</button></div></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
-/* ============================================================
-   行业认知提升工作台 — 单文件 / 零外链 / localStorage
-   架构：数据层 -> 计算层 -> 渲染层（单向）
-   所有渲染由 refreshAll() 统一调度，渲染函数之间互不调用
-   ============================================================ */
 (function(){
 'use strict';
-
-/* ---------- 常量 ---------- */
-var NS='wb_industry_cognition_';
-var KEY=NS+'state_v1';
-var TYPES={
-  news:{label:'行业动态',color:'blue',icon:'M4 5h16M4 10h16M4 15h10M4 20h7'},
-  trend:{label:'趋势关键词',color:'amber',icon:'m12 3 2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4L12 3Z'},
-  case:{label:'公司/案例',color:'teal',icon:'M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6'},
-  article:{label:'深度文章',color:'violet',icon:'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z'},
-  note:{label:'观点笔记',color:'green',icon:'M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'}
-};
-var STATUS={unread:'待读',reading:'在读',read:'已读'};
-
-/* ---------- 工具函数 ---------- */
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+var NS='wb_industry_brief_', KEY=NS+'state_v1';
+function today(){var d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function pad(n){return n<10?'0'+n:''+n}
-function dateStr(d){d=d||new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function addDays(s,n){var d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return dateStr(d)}
-function today(){return dateStr(new Date())}
+function dateStr(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function parseTags(s){if(Array.isArray(s))return s.filter(Boolean);return String(s||'').split(/[,，、\s]+/).map(function(t){return t.trim()}).filter(Boolean)}
-function svg(path,extra){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'+(extra||'')+'><path d="'+path+'"/></svg>'}
-function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(function(){t.classList.remove('show')},2200)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function svg(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+p+'"/></svg>'}
+function parseTags(s){if(Array.isArray(s))return s.filter(Boolean);return String(s||'').split(/[,，、;；\s]+/).map(function(t){return t.trim()}).filter(Boolean)}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show')},2200)}
 
-/* ---------- 数据层 ---------- */
-var state=null;
+/* ============ 真实供稿数据（2025-2026 系统综述 / meta 分析，含 DOI） ============ */
+function seedBriefs(){
+  var T=today();
+  return [
+  {
+    id:'b1', date:T, horizon:'daily', track:'frontier',
+    title:'闭环 BCI 用于卒中康复：42 项研究的系统综述',
+    oneLiner:'运动域证据较扎实，认知域仅见初步疗效且异质性高——"有前景"尚不等于"常规治疗"。',
+    findings:[
+      '纳入 42 项符合严格闭环定义的原始研究，覆盖 PubMed / Web of Science / Cochrane 等 6 大数据库（PRISMA）',
+      '运动：BCI + 机器人 / FES 促进半球间功能再平衡与皮质脊髓束重塑',
+      '认知：神经反馈对特定执行功能、注意力有初步疗效，但证据异质性高，需谨慎解读',
+      '安全性：非侵入式以轻度疲劳为主；侵入式设备相关不良事件约 5.6 / 1000 设备天'
+    ],
+    impact:'与你的闭环认知康复 BCI 主线直接相关。该综述可作为会议报告"领域全景"的权威框架；但认知域证据强度不足以支撑"疗效确立"的表述，建议明确区分运动域与认知域的证据等级。',
+    actions:[
+      '报告中把"认知域证据异质性高"作为你研究的立论缺口',
+      '引用 MCID（最小临床重要差异）解读临床获益，避免只报 p 值',
+      '关注作者提出的三大转化前提：多中心 RCT、标准化核心结局集 COS、AI 深度融合'
+    ],
+    evidence:{src:'Frontiers in Neurology',doi:'10.3389/fneur.2026.1861673',url:'https://pubmed.ncbi.nlm.nih.gov/42422209/',date:'2026-06-24',level:'系统综述（PRISMA，42项研究）',conf:'hi'},
+    tags:['脑机接口','闭环康复','卒中康复','认知障碍'],
+    baseValue:82, feedback:null, note:'', saved:false
+  },
+  {
+    id:'b2', date:T, horizon:'daily', track:'frontier',
+    title:'tDCS 改善卒中后认知存在"6 个月关键时间窗"',
+    oneLiner:'20 项 RCT、772 例患者：卒中 6 个月内 tDCS 显著改善认知（MoCA MD=2.51），6 个月后无效（MD=0.37）。',
+    findings:[
+      '整体认知 MoCA MD=2.11，95%CI [0.93, 3.30]，p=0.0005',
+      '≤6 个月亚组 MD=2.51，p<0.0001；>6 个月亚组 MD=0.37，p=0.38（无显著获益）',
+      '记忆与执行功能亦有显著改善；注册号 CRD42024543596，检索截至 2026 年 1 月'
+    ],
+    impact:'直击你的 tDCS-PSCI 荟萃分析主线。疗效可能主要由干预时机驱动，而非单纯靶点或参数——若你的主分析未做时间分层，这是一个需要补充的关键亚组。',
+    actions:[
+      '在你的 MA 中增加"病程 ≤6 月 vs >6 月"亚组分析',
+      '若原始数据允许，做"病程时长—效应量"的 meta 回归',
+      '投稿讨论部分主动对比该研究，说明你的样本时间构成'
+    ],
+    evidence:{src:'Disability and Rehabilitation (Taylor & Francis)',doi:'10.1080/10749357.2026.2651797',url:'https://www.tandfonline.com/doi/abs/10.1080/10749357.2026.2651797',date:'2026',level:'meta 分析（20 RCT / 772 例）',conf:'hi'},
+    tags:['tDCS','卒中康复','认知障碍','时间窗'],
+    baseValue:88, feedback:null, note:'', saved:false
+  },
+  {
+    id:'b3', date:T, horizon:'daily', track:'foundation',
+    title:'基础概念：MCID 与 SUCRA——两个常被误用的解读指标',
+    oneLiner:'p 值告诉你"有没有差异"，MCID 告诉你"差异有没有临床意义"，SUCRA 告诉你"谁更可能是最优方案"。',
+    findings:[
+      'MCID（最小临床重要差异）：患者能感知的最小改善幅度，用于判断统计显著是否等于临床获益',
+      'SUCRA（累积排序曲线下面积）：网络 meta 中某干预排在第一的概率，0–100%，越高越可能最优',
+      '注意：SUCRA 高 ≠ 疗效确切，需结合网络证据图的直接/间接证据一致性判断'
+    ],
+    impact:'你正在做 NMA，这两个指标是审稿人高频追问点。把定义与适用边界讲清楚，能显著提升论文可信度。',
+    actions:[
+      '在 NMA 结果中同时报告 SUCRA  ranking 与相对效应量及 95%CI',
+      '对主要结局补充 MCID 阈值对照，说明改善是否达临床意义'
+    ],
+    evidence:{src:'方法学概念整理（依据闭环 BCI 综述与 NIBS 网络 meta 的指标用法）',doi:'—',url:'',date:'基础卡片',level:'方法学基础',conf:'hi'},
+    tags:['网络meta','方法学','认知障碍'],
+    baseValue:70, feedback:null, note:'', saved:false
+  },
+  {
+    id:'b4', date:addDays(T,-2), horizon:'weekly', track:'frontier',
+    title:'网络 meta：TMS 认知疗效排名高于 tDCS，但 tDCS 功能结局更优',
+    oneLiner:'16 项研究、1397 例：TMS 在 MoCA/MMSE 排名第一（SUCRA 97.6%），tDCS 在 MBI/FIM 功能结局排名更高（85% vs 63%）。',
+    findings:[
+      'NIBS 整体改善 MoCA SMD=0.54、MMSE SMD=0.62、MBI/FIM SMD=0.65',
+      'TMS：MoCA SMD=0.71、MMSE SMD=0.70，SUCRA 分别为 97.64% / 95.9%',
+      'tDCS 单列在认知指标未显显著，但 MBI/FIM SUCRA 85% > TMS 63.12%',
+      '贝叶斯框架 MetaInsight v6.4.0，检索至 2025 年 7 月'
+    ],
+    impact:'【重点张力】这与上面 tDCS"6 个月时间窗"meta 的结论存在分歧：一个显示 tDCS 认知获益，一个显示 TMS 更优。差异可能来自时间窗、靶点分类与结局指标选择——正是你的 NMA 可以深挖的方法学切入点。',
+    actions:[
+      '在讨论部分并列这两项研究，用你的 Electrode_pair 分类 + 时间分层解释分歧',
+      '避免简单下"tDCS 有效 / 无效"的结论，转向"什么条件下对什么结局有效"',
+      '把结论分歧本身作为你研究的创新点陈述'
+    ],
+    evidence:{src:'Neurology (P9-5.015)',doi:'10.1212/WNL.0000000000216170',url:'https://www.neurology.org/doi/abs/10.1212/WNL.0000000000216170',date:'2025',level:'系统综述 + 网络 meta（会议摘要）',conf:'md'},
+    tags:['tDCS','TMS','网络meta','卒中康复','认知障碍'],
+    baseValue:90, feedback:null, note:'', saved:false
+  },
+  {
+    id:'b5', date:addDays(T,-3), horizon:'weekly', track:'frontier',
+    title:'BCI 训练改善卒中整体认知，但记忆无显著获益',
+    oneLiner:'12 项 RCT：整体认知 SMD=0.62，注意与执行功能改善、ADL 提升；记忆未显著。亚急性期 + 主动范式 + 多模态反馈效果最佳。',
+    findings:[
+      '整体认知 SMD=0.62（P<0.00001），注意、执行功能、日常生活活动均改善',
+      '记忆功能无显著改善',
+      '亚组：亚急性期、主动式 BCI 范式、多模态反馈（视觉+听觉+本体感觉）效果更稳健',
+      '纳入研究 PEDro 4–8 分，平均 5.75，方法学中高质量'
+    ],
+    impact:'与你"状态监测驱动的个性化反馈"主线高度契合：多模态反馈优于单一反馈，为闭环设计提供了直接证据。同时提醒：记忆不宜作为主要结局承诺。',
+    actions:[
+      '闭环方案设计时优先整合视觉 + 听觉 + 本体感觉多模态反馈',
+      '结局指标优先选整体认知 / 注意 / 执行功能与 ADL',
+      '若涉及记忆改善，下调预期或设为探索性结局'
+    ],
+    evidence:{src:'Journal of Neurology',doi:'PMID 42259992',url:'https://www.springermedicine.com/stroke/the-effect-of-brain-computer-interface-training-on-cognitive-fun/52524306',date:'2026-06',level:'meta 分析（12 RCT）',conf:'hi'},
+    tags:['脑机接口','认知障碍','卒中康复','多模态反馈'],
+    baseValue:85, feedback:null, note:'', saved:false
+  }];
+}
+function seedConcepts(){
+  return [
+    {id:'c1',name:'闭环 BCI（Closed-loop BCI）',category:'核心技术',def:'系统实时解码脑状态，并据此动态调整反馈/刺激参数，形成"解码—反馈—再解码"的回路；区别于按固定方案执行的开环系统。',why:'判断一个系统是否"真闭环"的关键：是否依据实时脑状态调整干预，而非仅按预设流程运行。',tags:['脑机接口','闭环康复'],mastered:true},
+    {id:'c2',name:'神经反馈（Neurofeedback）',category:'核心技术',def:'将脑电等神经信号实时映射为可视/可听反馈，让个体学会主动调节自身脑活动。',why:'认知域 BCI 干预的主要机制之一；注意其疗效证据异质性高，解读需谨慎。',tags:['脑机接口','认知障碍'],mastered:false},
+    {id:'c3',name:'Hebbian 可塑性',category:'神经机制',def:'"一起放电的神经元连接在一起"——同步的突触前后活动增强突触连接，是 BCI 促进功能重塑的核心机制假设。',tags:['神经机制','脑机接口'],why:'贯穿运动与认知康复的机制解释，写讨论部分时的理论支点。',mastered:false},
+    {id:'c4',name:'MCID 最小临床重要差异',category:'方法学',def:'患者能够感知到的最小改善幅度，用于判断统计显著是否具有临床意义。',why:'只报 p 值已不够，审稿人常要求对照 MCID 说明临床价值。',tags:['方法学','网络meta'],mastered:false},
+    {id:'c5',name:'SUCRA 累积排序曲线下面积',category:'方法学',def:'网络 meta 中某干预措施排名靠前的概率（0–100%），用于比较多种干预的相对优劣。',why:'NMA 的核心排序指标，但需结合直接/间接证据一致性，不可单独下结论。',tags:['网络meta','方法学'],mastered:false},
+    {id:'c6',name:'主动式 vs 被动式 BCI 范式',category:'核心技术',def:'主动式要求用户有意识地调节脑信号以控制系统；被动式仅监测状态而不要求主动控制。',why:'BCI 认知 meta 显示主动式范式效果更稳健，方案设计时需明确选择。',tags:['脑机接口','闭环康复'],mastered:false},
+    {id:'c7',name:'多模态反馈',category:'核心技术',def:'同时提供视觉、听觉、本体感觉等多种反馈通道。',why:'BCI 认知 meta 显示多模态反馈优于单一反馈，是提升闭环效果的关键设计变量。',tags:['脑机接口','多模态反馈'],mastered:false},
+    {id:'c8',name:'核心结局集 COS',category:'方法学',def:'某疾病领域公认应统一报告的最小结局指标集合，用于降低研究间异质性、提升可合并性。',why:'闭环 BCI 综述指出的转化前提之一；采用 COS 有助于解决你关注的证据异质性问题。',tags:['方法学','卒中康复'],mastered:false}
+  ];
+}
 function seed(){
-  var t=today();
+  var T=today();
   return {
-    profile:{industry:'医疗健康 / 康复医学',role:'医生 / 大学教授',focus:['脑机接口','卒中康复','认知障碍','闭环康复'],goal:'每天沉淀 1 条行业认知，每周完成 1 次复盘',dailyCount:3,reviewCycle:'daily'},
-    items:[
-      {id:uid(),type:'article',title:'自适应闭环脑机接口在卒中认知康复中的研究进展',summary:'梳理状态监测驱动的闭环康复范式，关注 EEG 特征解码与实时反馈策略。',url:'',tags:['脑机接口','卒中康复'],source:'深度文章',status:'unread',starred:true,dueDate:addDays(t,-1),createdAt:addDays(t,-3),readAt:''},
-      {id:uid(),type:'trend',title:'趋势关键词：状态监测 / 闭环刺激 / 个体化阈值',summary:'近期高频出现的三个概念，值得建立认知卡片持续追踪。',url:'',tags:['闭环康复','脑机接口'],source:'趋势雷达',status:'unread',starred:false,dueDate:t,createdAt:addDays(t,-1),readAt:''},
-      {id:uid(),type:'case',title:'某厂商 EEG 闭环康复系统产品拆解',summary:'采集—解码—反馈链路完整，但个体化阈值自适应能力仍有空白。',url:'',tags:['脑机接口','竞品'],source:'公司案例',status:'reading',starred:false,dueDate:t,createdAt:t,readAt:''},
-      {id:uid(),type:'news',title:'行业动态：康复医学中心建设指南更新',summary:'关注认知康复评估相关章节的更新要点。',url:'',tags:['卒中康复','政策'],source:'行业动态',status:'unread',starred:false,dueDate:addDays(t,1),createdAt:t,readAt:''},
-      {id:uid(),type:'note',title:'观点笔记：状态监测是闭环康复的前提',summary:'没有可靠的脑状态解码，所谓"自适应"只是开环的进阶版。',url:'',tags:['闭环康复'],source:'个人观点',status:'read',starred:true,dueDate:'',createdAt:addDays(t,-2),readAt:addDays(t,-2)}
-    ],
-    cards:[
-      {id:uid(),q:'闭环康复与开环康复的本质区别是什么？',a:'闭环依赖对脑状态的实时解码，根据当前状态动态调整刺激/反馈参数；开环按固定方案执行，不感知状态变化。',tags:['闭环康复'],source:'自适应闭环认知康复',reviews:0,lastReview:'',createdAt:addDays(t,-2)},
-      {id:uid(),q:'tDCS 治疗 PSCI 的关键效应方向如何判定？',a:'需结合 Direction_factor 与电极靶点，避免方向符号错误；靶点分类优先使用 Electrode_pair。',tags:['卒中康复','认知障碍'],source:'个人研究',reviews:1,lastReview:addDays(t,-1),createdAt:addDays(t,-4)}
-    ],
-    reviews:[
-      {id:uid(),date:addDays(t,-2),good:'完成闭环 BCI 综述精读，建立第一张认知卡片。',bad:'信息流收录零散，标签体系未统一。',next:'统一标签命名，固定每天 15:00 处理待读。',createdAt:addDays(t,-2)}
-    ],
-    ui:{kbTab:'cards',recSeed:0,seeded:true},
-    meta:{lastOpen:t,createdAt:t}
+    profile:{industry:'医疗健康 / 康复医学',role:'医生 / 大学教授',goal:'持续跟踪卒中认知康复与闭环 BCI 前沿，支撑科研与会议报告',focus:['脑机接口','卒中康复','认知障碍','闭环康复'],depth:'balanced',pace:'daily'},
+    briefs:seedBriefs(), concepts:seedConcepts(),
+    feedbackLog:[],
+    tagWeights:{},
+    ui:{tab:'briefs',horizon:'daily',kb:'foundation'},
+    meta:{createdAt:T,lastSupply:'2026-11-20',version:2}
   };
 }
+
+/* ============ 数据层 ============ */
+var state=null;
 function load(){
-  try{
-    var raw=localStorage.getItem(KEY);
-    if(raw){state=JSON.parse(raw);ensureShape();return}
-  }catch(e){}
+  try{var raw=localStorage.getItem(KEY);if(raw){state=JSON.parse(raw);shape();return}}catch(e){}
   state=seed();save();
 }
-function ensureShape(){
+function shape(){
   var d=seed();
-  ['profile','items','cards','reviews','ui','meta'].forEach(function(k){if(!state[k])state[k]=d[k]});
-  ['industry','role','focus','goal','dailyCount','reviewCycle'].forEach(function(k){if(state.profile[k]===undefined)state.profile[k]=d.profile[k]});
-  if(!Array.isArray(state.items))state.items=[];
-  if(!Array.isArray(state.cards))state.cards=[];
-  if(!Array.isArray(state.reviews))state.reviews=[];
+  ['profile','briefs','concepts','feedbackLog','tagWeights','ui','meta'].forEach(function(k){if(!state[k])state[k]=d[k]});
+  if(!Array.isArray(state.briefs)||!state.briefs.length)state.briefs=d.briefs;
+  if(!Array.isArray(state.concepts)||!state.concepts.length)state.concepts=d.concepts;
+  if(!Array.isArray(state.feedbackLog))state.feedbackLog=[];
+  if(!state.tagWeights)state.tagWeights={};
   if(!state.ui)state.ui=d.ui;
-  if(state.ui.kbTab===undefined)state.ui.kbTab='cards';
-  if(state.ui.recSeed===undefined)state.ui.recSeed=0;
 }
-function save(){
-  try{localStorage.setItem(KEY,JSON.stringify(state));setSync('本地已保存')}
-  catch(e){setSync('保存失败')}
-}
-function setSync(t){var el=document.getElementById('sync-text');if(el)el.textContent=t}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){toast('保存失败：存储空间不足')}}
 
-/* ---------- 计算层：推荐 / 统计 ---------- */
-/* 扩展点：个性化推荐规则注册。规则签名 function(item,profile,ctx)->number (权重) */
-var RECOMMEND_RULES=[];
-function registerRecommendRule(fn){if(typeof fn==='function')RECOMMEND_RULES.push(fn)}
-/* 扩展点：外部数据源适配器注册。适配器签名 {name, fetch:function()->Promise<Item[]>} */
-var DATA_SOURCES=[];
-function registerDataSource(src){if(src&&typeof src.fetch==='function')DATA_SOURCES.push(src)}
-window.WB_Insight={registerRecommendRule:registerRecommendRule,registerDataSource:registerDataSource,getState:function(){return state},save:save};
-
-function focusScore(item){
-  var focus=parseTags(state.profile.focus),tags=(item.tags||[]).map(function(x){return String(x).toLowerCase()});
-  var s=0;focus.forEach(function(f){f=String(f).toLowerCase();if(!f)return;if(tags.indexOf(f)>=0)s+=3;else if(String(item.title+' '+item.summary).toLowerCase().indexOf(f)>=0)s+=1});
-  return s;
-}
-function recommend(n){
-  var pool=state.items.filter(function(i){return i.status!=='read'});
-  var scored=pool.map(function(it){
-    var s=focusScore(it)+(it.starred?2:0)+(it.status==='reading'?1:0);
-    RECOMMEND_RULES.forEach(function(fn){try{s+=Number(fn(it,state.profile,{}))||0}catch(e){}});
-    return {it:it,s:s};
+/* ============ 计算层：真实反馈驱动的推荐 ============ */
+/* 标签权重 = 基础关注 + 反馈累积。useful +3 / deep +2 / neutral +0 / irrelevant -3 */
+function effectiveScore(b){
+  var focus=state.profile.focus||[]; var w=state.tagWeights||{};
+  var s=b.baseValue||0;
+  (b.tags||[]).forEach(function(t){
+    var base=focus.indexOf(t)>=0?6:0;
+    s += base + (w[t]||0);
   });
-  scored.sort(function(a,b){return b.s-a.s||String(b.it.createdAt).localeCompare(String(a.it.createdAt))});
-  var offset=(state.ui.recSeed||0)%Math.max(1,scored.length);
-  var rotated=scored.slice(offset).concat(scored.slice(0,offset));
-  return rotated.slice(0,n||3).map(function(x){return x.it});
+  // 未读微加权，避免已读长期占据顶部
+  if(b.feedback==='useful'||b.feedback==='deep')s-=2;
+  return Math.round(s);
 }
-function stats(){
-  var items=state.items,cards=state.cards;
-  var done=items.filter(function(i){return i.status==='read'}).length;
-  var todayDone=items.filter(function(i){return i.readAt&&i.readAt.slice(0,10)===today()}).length;
-  var overdue=items.filter(function(i){return i.status!=='read'&&i.dueDate&&i.dueDate<today()}).length;
-  var due=items.filter(function(i){return i.status!=='read'&&i.dueDate&&i.dueDate<=today()}).length;
-  var week=[];var t=today();
-  for(var i=6;i>=0;i--){var d=addDays(t,-i);week.push({d:d,n:items.filter(function(x){return x.createdAt&&x.createdAt.slice(0,10)===d}).length+cards.filter(function(x){return x.createdAt&&x.createdAt.slice(0,10)===d}).length})}
-  return {total:items.length,done:done,doneRate:items.length?Math.round(done/items.length*100):0,todayDone:todayDone,overdue:overdue,due:due,cards:cards.length,reviews:state.reviews.length,week:week};
+function rankBriefs(list){
+  return list.slice().sort(function(a,b){return effectiveScore(b)-effectiveScore(a)});
 }
-function todayList(){
-  var t=today();
-  return state.items.filter(function(i){return i.status!=='read'&&i.dueDate&&i.dueDate<=t})
-    .sort(function(a,b){return a.dueDate.localeCompare(b.dueDate)});
+function matchTags(b){
+  var focus=state.profile.focus||[];
+  return (b.tags||[]).filter(function(t){return focus.indexOf(t)>=0});
 }
-
-/* ================= 渲染层：总览 ================= */
-function renderBrand(){
-  var p=state.profile;
-  var sub=document.getElementById('brand-sub');
-  if(sub)sub.textContent=[p.industry,p.role].filter(Boolean).join(' · ')||'你的行业 · 你的岗位 · 持续进化';
-}
-function renderBackupHint(){
-  var n=state.items.length+state.cards.length+state.reviews.length;
-  var box=document.getElementById('backup-hint');
-  if(n>=30){box.classList.add('show');document.getElementById('backup-hint-text').textContent='数据已积累 '+n+' 条，建议导出一份 JSON 备份'}
-  else box.classList.remove('show');
-}
-function renderToday(){
-  var box=document.getElementById('today-list');
-  var list=todayList();
-  var cnt=document.getElementById('today-count');
-  cnt.textContent=list.length+' 项待处理';
-  if(!list.length){
-    box.innerHTML='<div class="empty">'+svg('M9 11l3 3L22 4')+'<div>今天没有待处理项，去信息流收录一些吧</div></div>';
-    return;
+function applyFeedback(briefId,action){
+  var b=null;for(var i=0;i<state.briefs.length;i++)if(state.briefs[i].id===briefId){b=state.briefs[i];break}
+  if(!b)return;
+  var delta={useful:3,deep:2,neutral:0,irrelevant:-3}[action];
+  if(b.feedback===action){ // 重复点击 = 撤销
+    if(delta!==0)(b.tags||[]).forEach(function(t){state.tagWeights[t]=(state.tagWeights[t]||0)-delta});
+    b.feedback=null;
+    state.feedbackLog=state.feedbackLog.filter(function(x){return x.briefId!==briefId});
+    toast('已撤销反馈');
+  }else{
+    if(b.feedback){var old={useful:3,deep:2,neutral:0,irrelevant:-3}[b.feedback];if(old!==0)(b.tags||[]).forEach(function(t){state.tagWeights[t]=(state.tagWeights[t]||0)-old})}
+    if(delta!==0)(b.tags||[]).forEach(function(t){state.tagWeights[t]=(state.tagWeights[t]||0)+delta});
+    b.feedback=action;
+    state.feedbackLog.push({id:uid(),date:today(),briefId:briefId,action:action});
+    toast('已记录反馈，推荐排序已更新');
   }
-  box.innerHTML=list.map(function(it){
-    var over=it.dueDate&&it.dueDate<today();
-    var meta=['<span>'+esc(TYPES[it.type]?TYPES[it.type].label:it.type)+'</span>'];
-    if(over)meta.push('<span class="overdue">已逾期 '+dayDiff(it.dueDate,today())+' 天（'+esc(it.dueDate)+'）</span>');
-    else meta.push('<span>今天到期</span>');
-    (it.tags||[]).slice(0,3).forEach(function(tg){meta.push('<span class="chip">'+esc(tg)+'</span>')});
-    return '<div class="today-item">'+
-      '<button class="today-check" data-action="item-done" data-id="'+it.id+'" title="标记已读">'+svg('M20 6 9 17l-5-5')+'</button>'+
-      '<div class="today-main"><div class="today-title">'+esc(it.title)+'</div><div class="today-meta">'+meta.join('')+'</div></div>'+
-      '<div class="today-act"><button class="icon-btn" data-action="view-item" data-id="'+it.id+'" title="查看">'+svg('M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z')+'</button>'+
-      '<button class="icon-btn" data-action="card-from-item" data-id="'+it.id+'" title="存为认知卡片">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button></div></div>';
-  }).join('');
+  save();refreshAll();
 }
-function dayDiff(a,b){
-  var d1=new Date(a+'T00:00:00'),d2=new Date(b+'T00:00:00');
-  return Math.max(0,Math.round((d2-d1)/86400000));
-}
-function renderRecs(){
-  var box=document.getElementById('daily-recs');
-  var recs=recommend(state.profile.dailyCount||3);
-  if(!recs.length){box.innerHTML='<div class="empty">'+svg('m12 3 2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4L12 3Z')+'<div>暂无可推荐内容</div></div>';return}
-  box.innerHTML=recs.map(function(it){
-    var ty=TYPES[it.type]||TYPES.note;
-    var score=focusScore(it);
-    return '<div class="item" style="margin-bottom:9px">'+
-      '<div class="item-ic" style="background:var(--'+ty.color+'-l);color:var(--'+ty.color+')">'+svg(ty.icon)+'</div>'+
-      '<div class="item-body"><div class="item-title">'+esc(it.title)+'</div>'+
-      (it.summary?'<div class="item-sum">'+esc(it.summary).slice(0,72)+'</div>':'')+
-      '<div class="item-meta"><span class="chip '+ty.color+'">'+ty.label+'</span>'+(score>0?'<span class="chip blue">匹配度 '+score+'</span>':'')+
-      (it.tags||[]).slice(0,2).map(function(tg){return '<span class="chip">'+esc(tg)+'</span>'}).join('')+'</div></div>'+
-      '<div class="item-acts"><button class="icon-btn" data-action="item-done" data-id="'+it.id+'" title="标记已读">'+svg('M20 6 9 17l-5-5')+'</button>'+
-      '<button class="icon-btn" data-action="card-from-item" data-id="'+it.id+'" title="存为卡片">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button></div></div>';
-  }).join('');
-}
-function renderProgress(){
-  var s=stats();
-  var goal=state.profile.goal||'建立持续精进的行业认知体系';
-  var circumference=2*Math.PI*52;
-  var offset=circumference*(1-s.doneRate/100);
-  var weekMax=Math.max(1,Math.max.apply(null,s.week.map(function(w){return w.n})));
-  var pts=s.week.map(function(w,i){var x=10+i*(280/6);var y=70-(w.n/weekMax)*52;return x+','+y}).join(' ');
-  document.getElementById('progress-overview').innerHTML=
-    '<div class="ring-wrap"><svg class="ring" viewBox="0 0 120 120">'+
-      '<circle cx="60" cy="60" r="52" fill="none" stroke="#eef1f7" stroke-width="11"/>'+
-      '<circle cx="60" cy="60" r="52" fill="none" stroke="#2563eb" stroke-width="11" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'" transform="rotate(-90 60 60)"/>'+
-      '<text x="60" y="57" text-anchor="middle" font-size="24" font-weight="800" fill="#1e293b">'+s.doneRate+'%</text>'+
-      '<text x="60" y="76" text-anchor="middle" font-size="11" fill="#93a0b5">已读完成率</text></svg>'+
-      '<div class="ring-info"><div class="big">'+s.cards+' 张认知卡片</div>'+
-      '<div class="sm">'+esc(goal)+'</div>'+
-      '<div class="prog-line"><div class="pl"><span>今日已处理</span><b>'+s.todayDone+' 条</b></div><div class="hbar"><i style="width:'+Math.min(100,s.todayDone*25)+'%"></i></div></div>'+
-      '<div class="prog-line"><div class="pl"><span>待办（含逾期 '+s.overdue+'）</span><b>'+s.due+' 条</b></div><div class="hbar"><i style="width:'+Math.min(100,s.due*15)+'%;background:var(--amber)"></i></div></div>'+
-      '</div></div>'+
-    '<svg viewBox="0 0 300 84" style="margin-top:14px"><polyline points="'+pts+'" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
-      s.week.map(function(w,i){var x=10+i*(280/6);var y=70-(w.n/weekMax)*52;return '<circle cx="'+x+'" cy="'+y+'" r="3" fill="#7c3aed"/>'}).join('')+
-      '<text x="10" y="82" font-size="9" fill="#93a0b5">6天前</text><text x="270" y="82" font-size="9" fill="#93a0b5">今天</text></svg>';
-}
-function renderProfileStrip(){
+function fbCount(a){return state.feedbackLog.filter(function(x){return x.action===a}).length}
+
+/* ================= 渲染层：头部 ================= */
+function renderHeader(){
   var p=state.profile;
-  var areas=parseTags(p.focus);
-  document.getElementById('profile-strip').innerHTML=
-    '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">'+
-      '<div style="min-width:150px"><div class="muted" style="font-size:12px">行业 / 岗位</div><div style="font-weight:650">'+esc(p.industry||'未设置')+' · '+esc(p.role||'未设置')+'</div></div>'+
-      '<div style="flex:1;min-width:180px"><div class="muted" style="font-size:12px">关注领域</div><div style="margin-top:3px">'+(areas.length?areas.map(function(a){return '<span class="chip violet">'+esc(a)+'</span>'}).join(' '):'<span class="muted">未设置</span>')+'</div></div>'+
-      '<div style="flex:1;min-width:180px"><div class="muted" style="font-size:12px">学习目标</div><div style="font-size:13.5px">'+esc(p.goal||'未设置')+'</div></div>'+
-    '</div>';
+  document.getElementById('pill-profile').textContent=[p.industry,p.role].filter(Boolean).join(' · ')||'未设置画像';
+  document.getElementById('brand-sub').textContent='跟进 · 总结 · 反馈 · 推荐';
 }
 
-/* ================= 渲染层：信息流 ================= */
-function renderFeed(){
-  var list=state.items.slice();
-  var kw=(document.getElementById('feed-search').value||'').trim().toLowerCase();
-  var type=document.getElementById('feed-type').value;
-  var status=document.getElementById('feed-status').value;
-  var selTag=window._feedSelTag||'';
+/* ================= 渲染层：认知简报 ================= */
+function renderBriefs(){
+  var h=state.ui.horizon;
+  var list=state.briefs.filter(function(b){return b.horizon===h});
+  list=rankBriefs(list);
+  document.getElementById('brief-heading').textContent=h==='daily'?'今日重点':'本周重点';
+  var segs=document.querySelectorAll('[data-horizon]');
+  for(var i=0;i<segs.length;i++)segs[i].classList.toggle('on',segs[i].getAttribute('data-horizon')===h);
+  var unread=list.filter(function(b){return !b.feedback}).length;
+  document.getElementById('brief-summary').innerHTML='共 '+list.length+' 条 · 未反馈 '+unread+' 条 · 已按你的画像与反馈重新排序，越靠上越相关';
 
-  // 填充类型下拉（只做一次）
-  var sel=document.getElementById('feed-type');
-  if(sel.options.length<=1){Object.keys(TYPES).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=TYPES[k].label;sel.appendChild(o)})}
-
-  // 标签栏（按钮形式，点击筛选）
-  var tagCount={};list.forEach(function(it){(it.tags||[]).forEach(function(tg){tagCount[tg]=(tagCount[tg]||0)+1})});
-  var tags=Object.keys(tagCount).sort(function(a,b){return tagCount[b]-tagCount[a]});
-  document.getElementById('feed-tagbar').innerHTML='<span class="muted" style="font-size:12px">标签：</span>'+
-    '<span class="chip tagbtn '+(selTag?'':'sel')+'" data-tag="">全部</span>'+
-    tags.map(function(tg){return '<span class="chip tagbtn '+(selTag===tg?'sel':'')+'" data-tag="'+esc(tg)+'">'+esc(tg)+'<b>'+tagCount[tg]+'</b></span>'}).join('');
-
-  if(kw)list=list.filter(function(it){return String(it.title+' '+it.summary+' '+(it.tags||[]).join(' ')).toLowerCase().indexOf(kw)>=0});
-  if(type)list=list.filter(function(it){return it.type===type});
-  if(status)list=list.filter(function(it){return it.status===status});
-  if(selTag)list=list.filter(function(it){return (it.tags||[]).indexOf(selTag)>=0});
-  list.sort(function(a,b){return String(b.createdAt).localeCompare(String(a.createdAt))});
-
-  document.getElementById('feed-count').textContent='共 '+state.items.length+' 条 · 当前 '+list.length+' 条';
-  var box=document.getElementById('feed-list');
-  if(!list.length){box.innerHTML='<div class="empty">'+svg('M4 5h16M4 10h16M4 15h10M4 20h7')+'<div>没有符合条件的内容</div></div>';return}
-  box.innerHTML=list.map(function(it){
-    var ty=TYPES[it.type]||TYPES.note;
-    var over=it.status!=='read'&&it.dueDate&&it.dueDate<today();
-    var stCls=it.status==='read'?'green':(it.status==='reading'?'amber':'blue');
-    var title=it.url?'<a href="'+esc(it.url)+'" target="_blank" rel="noopener">'+esc(it.title)+'</a>':esc(it.title);
-    var acts='<button class="icon-btn" data-action="edit-item" data-id="'+it.id+'" title="编辑">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button>';
-    if(it.status!=='read')acts+='<button class="icon-btn" data-action="item-done" data-id="'+it.id+'" title="标记已读">'+svg('M20 6 9 17l-5-5')+'</button>';
-    return '<div class="item '+(it.status==='read'?'is-read':'')+'">'+
-      '<div class="item-ic" style="background:var(--'+ty.color+'-l);color:var(--'+ty.color+')">'+svg(ty.icon)+'</div>'+
-      '<div class="item-body"><div class="item-title">'+title+'</div>'+
-      (it.summary?'<div class="item-sum">'+esc(it.summary)+'</div>':'')+
-      '<div class="item-meta"><span class="chip '+ty.color+'">'+ty.label+'</span><span class="chip '+stCls+'">'+STATUS[it.status]+'</span>'+
-      (it.starred?'<span class="chip amber">★ 重点</span>':'')+
-      (over?'<span class="overdue" style="font-size:11px">逾期</span>':'')+
-      (it.dueDate?'<span class="muted" style="font-size:11px">'+esc(it.dueDate)+'</span>':'')+
-      (it.tags||[]).map(function(tg){return '<span class="chip">'+esc(tg)+'</span>'}).join('')+'</div></div>'+
-      '<div class="item-acts">'+acts+'</div></div>';
-  }).join('');
+  var box=document.getElementById('brief-list');
+  if(!list.length){box.innerHTML='<div class="empty">'+svg('M4 4h16v16H4zM8 8h8M8 12h8')+'<div>该视图暂无简报</div></div>';return}
+  box.innerHTML=list.map(function(b){return briefCard(b)}).join('');
+}
+function briefCard(b){
+  var score=effectiveScore(b);
+  var mt=matchTags(b);
+  var why=mt.length?('命中你的关注领域：'+mt.join('、')):'基础内容 · 建议纳入知识体系';
+  var conf=b.evidence.conf==='hi'?'<span class="conf hi">高可信</span>':'<span class="conf md">中可信</span>';
+  var track=b.track==='foundation'?'<span class="chip violet">基础</span>':'<span class="chip blue">前沿</span>';
+  var fb=b.feedback;
+  function fbCls(act){return 'fb '+(fb===act?'on-'+act:'')}
+  return '<article class="brief">'+
+    '<div class="brief-hd">'+
+      '<div class="brief-top">'+track+'<span class="score">相关度 '+score+'</span><span class="muted" style="font-size:11.5px">'+esc(b.date)+'</span>'+conf+'</div>'+
+      '<h3 class="brief-title">'+esc(b.title)+'</h3>'+
+      '<div class="oneliner">'+esc(b.oneLiner)+'</div>'+
+      '<div class="why">'+svg('M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4')+'为什么推荐：'+esc(why)+'</div>'+
+    '</div>'+
+    '<div class="brief-body">'+
+      '<div class="detail"><div class="detail-lbl">'+svg('M9 11l3 3L22 4')+'关键发现</div><ul class="findings">'+b.findings.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul></div>'+
+      '<div class="detail"><div class="detail-lbl">'+svg('M12 2 2 7l10 5 10-5-10-5Z')+'潜在影响</div><p class="impact-txt">'+esc(b.impact)+'</p></div>'+
+      '<div class="detail"><div class="detail-lbl">'+svg('M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4 12 14.01l-3-3')+'可执行建议</div><ol class="findings">'+b.actions.map(function(a){return '<li>'+esc(a)+'</li>'}).join('')+'</ol></div>'+
+      '<div class="detail"><div class="detail-lbl">'+svg('M4 4h16v16H4zM8 8h8M8 12h8')+'依据来源</div><div class="evidence">'+esc(b.evidence.src)+' · '+esc(b.evidence.date)+' · '+esc(b.evidence.level)+
+        (b.evidence.doi&&b.evidence.doi!=='—'?' · DOI '+esc(b.evidence.doi):'')+
+        (b.evidence.url?' · <a href="'+esc(b.evidence.url)+'" target="_blank" rel="noopener">查看原文 ↗</a>':'')+'</div></div>'+
+    '</div>'+
+    '<div class="brief-ft">'+
+      '<button class="'+fbCls('deep')+'" data-fb="'+b.id+'" data-act="deep">'+svg('M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z')+'深读</button>'+
+      '<button class="'+fbCls('useful')+'" data-fb="'+b.id+'" data-act="useful">'+svg('M20 6 9 17l-5-5')+'有用</button>'+
+      '<button class="'+fbCls('neutral')+'" data-fb="'+b.id+'" data-act="neutral">一般</button>'+
+      '<button class="'+fbCls('irrelevant')+'" data-fb="'+b.id+'" data-act="irrelevant">无关</button>'+
+      '<div class="ft-right"><button class="'+fbCls('save')+'" data-fb="'+b.id+'" data-act="save" title="收藏">'+svg('M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z')+'</button>'+
+      '<span class="note-toggle" data-note="'+b.id+'">笔记'+(b.note?' ✓':'')+'</span></div>'+
+    '</div>'+
+    '<div class="note-box" id="note-'+b.id+'"><textarea placeholder="记下你的思考、与自身工作的关联、可引用的点…" data-notefield="'+b.id+'">'+esc(b.note)+'</textarea></div>'+
+  '</article>';
 }
 
-/* ================= 渲染层：知识库 ================= */
+/* ================= 渲染层：知识体系 ================= */
 function renderKnowledge(){
-  var tabs=document.querySelectorAll('#kb-tabs .kb-tab');
-  for(var i=0;i<tabs.length;i++)tabs[i].classList.toggle('active',tabs[i].getAttribute('data-kb')===state.ui.kbTab);
-  var panel=document.getElementById('kb-panel');
-  var tab=state.ui.kbTab;
-  if(tab==='cards')panel.innerHTML=viewCards();
-  else if(tab==='cases')panel.innerHTML=viewCases();
-  else if(tab==='notes')panel.innerHTML=viewNotes();
-  else panel.innerHTML=viewTags();
-}
-function viewCards(){
-  if(!state.cards.length)return '<div class="empty">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'<div>还没有认知卡片，点击上方按钮新建</div></div>';
-  return state.cards.slice().sort(function(a,b){return String(b.createdAt).localeCompare(String(a.createdAt))}).map(function(c){
-    return '<div class="flashcard" data-fc="'+c.id+'">'+
-      '<div class="fc-q">Q · '+esc(c.q)+'</div>'+
-      '<div class="fc-a">A · '+esc(c.a)+'</div>'+
-      '<div class="item-meta">'+(c.tags||[]).map(function(tg){return '<span class="chip violet">'+esc(tg)+'</span>'}).join('')+
-      '<span class="chip">复习 '+(c.reviews||0)+' 次</span>'+(c.source?'<span class="muted" style="font-size:11px">来自：'+esc(c.source)+'</span>':'')+'</div>'+
-      '<div class="fc-actions"><button class="btn btn-ghost btn-sm" data-action="flip-card" data-id="'+c.id+'">翻面看答案</button>'+
-      '<button class="btn btn-ghost btn-sm" data-action="review-card" data-id="'+c.id+'">复习 +1</button>'+
-      '<button class="icon-btn" data-action="edit-card" data-id="'+c.id+'" title="编辑">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button></div></div>';
-  }).join('');
-}
-function viewCases(){
-  var arr=state.items.filter(function(i){return i.type==='case'});
-  if(!arr.length)return '<div class="empty">'+svg('M3 21h18M5 21V7l7-4 7 4v14')+'<div>还没有公司/案例，去信息流收录（类型选「公司/案例」）</div></div>';
-  return arr.slice().sort(function(a,b){return String(b.createdAt).localeCompare(String(a.createdAt))}).map(function(it){
-    return '<div class="card-note"><div class="note-title">'+svg('M3 21h18M5 21V7l7-4 7 4v14')+esc(it.title)+'</div>'+
-      '<div class="note-body">'+esc(it.summary||'（无描述）')+'</div>'+
-      '<div class="item-meta">'+(it.tags||[]).map(function(tg){return '<span class="chip teal">'+esc(tg)+'</span>'}).join('')+
-      '<button class="icon-btn" style="margin-left:auto" data-action="edit-item" data-id="'+it.id+'">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button></div></div>';
-  }).join('');
-}
-function viewNotes(){
-  var arr=state.items.filter(function(i){return i.type==='note'});
-  if(!arr.length)return '<div class="empty">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'<div>还没有观点笔记，去信息流收录（类型选「观点笔记」）</div></div>';
-  return arr.slice().sort(function(a,b){return String(b.createdAt).localeCompare(String(a.createdAt))}).map(function(it){
-    return '<div class="card-note"><div class="note-title">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+esc(it.title)+'</div>'+
-      '<div class="note-body">'+esc(it.summary||'')+'</div>'+
-      '<div class="item-meta">'+(it.tags||[]).map(function(tg){return '<span class="chip green">'+esc(tg)+'</span>'}).join('')+
-      '<button class="icon-btn" style="margin-left:auto" data-action="edit-item" data-id="'+it.id+'">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button></div></div>';
-  }).join('');
-}
-function viewTags(){
-  var map={};
-  state.items.forEach(function(it){(it.tags||[]).forEach(function(tg){(map[tg]=map[tg]||[]).push(it.title)})});
-  state.cards.forEach(function(c){(c.tags||[]).forEach(function(tg){(map[tg]=map[tg]||[]).push(c.q)})});
-  var keys=Object.keys(map).sort(function(a,b){return map[b].length-map[a].length});
-  if(!keys.length)return '<div class="empty"><div>还没有标签</div></div>';
-  return '<div class="muted" style="font-size:12.5px;margin-bottom:10px">点击标签查看归入该标签的全部内容</div>'+
-    '<div class="tag-cloud">'+keys.map(function(k){return '<span class="chip tagbtn" data-tag="'+esc(k)+'">'+esc(k)+'<b>'+map[k].length+'</b></span>'}).join('')+'</div>'+
-    '<div style="margin-top:16px">'+keys.map(function(k){return '<details style="border-bottom:1px solid var(--line-2);padding:8px 0"><summary style="cursor:pointer;font-weight:600;font-size:13.5px">'+esc(k)+' · '+map[k].length+' 条</summary><ul style="font-size:13px;color:var(--ink-2);margin:8px 0 4px 18px;padding:0">'+map[k].map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></details>'}).join('')+'</div>';
-}
-
-/* ================= 渲染层：复盘统计 ================= */
-function renderReview(){
-  var s=stats();
-  // 复盘提醒
-  var cycle=state.profile.reviewCycle;
-  var rem=document.getElementById('review-reminder');
-  if(cycle==='off'){rem.innerHTML=''}
-  else{
-    var pending=!state.reviews.some(function(r){return r.date===today()});
-    rem.innerHTML='<div class="reminder">'+svg('M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z')+
-      '<span>'+(pending?'今天还没写复盘，花 3 分钟沉淀一下今天的认知收获。':'今天已完成复盘，保持节奏！')+'</span>'+
-      '<button class="btn btn-primary btn-sm" style="margin-left:auto" data-action="new-review">写复盘</button></div>';
+  var k=state.ui.kb;
+  var tabs=document.querySelectorAll('[data-kb]');
+  for(var i=0;i<tabs.length;i++)tabs[i].classList.toggle('on',tabs[i].getAttribute('data-kb')===k);
+  var box=document.getElementById('kb-panel');
+  if(k==='foundation'){
+    var cats={};state.concepts.forEach(function(c){(cats[c.category]=cats[c.category]||[]).push(c)});
+    box.innerHTML=Object.keys(cats).map(function(cat){
+      return '<div style="font-size:12.5px;font-weight:700;color:var(--ink3);margin:14px 0 8px">'+esc(cat)+'</div>'+
+        cats[cat].map(function(c){
+          return '<div class="concept"><div class="concept-hd">'+
+            '<button class="mastery '+(c.mastered?'done':'')+'" data-master="'+c.id+'" title="标记掌握">'+svg('M20 6 9 17l-5-5')+'</button>'+
+            '<div style="flex:1"><div class="concept-name" style="'+(c.mastered?'color:var(--ink3)':'')+'">'+esc(c.name)+'</div>'+
+            '<div class="concept-def">'+esc(c.def)+'</div>'+
+            '<div class="concept-why">为何重要：'+esc(c.why)+'</div>'+
+            '<div style="margin-top:8px">'+(c.tags||[]).map(function(t){return '<span class="chip">'+esc(t)+'</span>'}).join(' ')+'</div></div></div></div>';
+        }).join('');
+    }).join('');
+  }else{
+    var sorted=state.briefs.slice().sort(function(a,b){return b.date.localeCompare(a.date)});
+    box.innerHTML='<div style="font-size:12.5px;color:var(--ink2);margin-bottom:16px">按时间追踪的前沿动态，均附来源与可信度。点开简报页可查看完整结论与建议。</div>'+
+      sorted.map(function(b){
+        return '<div class="timeline-item"><div class="tl-dot"></div><div><div class="tl-date">'+esc(b.date)+' · '+(b.track==='foundation'?'基础':'前沿')+'</div>'+
+          '<div class="tl-title">'+esc(b.title)+'</div><div style="font-size:12.5px;color:var(--ink2);margin-top:3px">'+esc(b.oneLiner)+'</div>'+
+          '<div style="font-size:11.5px;color:var(--ink3);margin-top:5px">'+esc(b.evidence.src)+(b.evidence.doi&&b.evidence.doi!=='—'?' · '+esc(b.evidence.doi):'')+'</div></div></div>';
+      }).join('');
   }
-  // 指标卡
-  document.getElementById('stat-grid').innerHTML=
-    statCard('blue',s.total,'累计收录','条信息')+
-    statCard('green',s.done+' / '+s.total,'已读 '+s.doneRate+'%','阅读完成度')+
-    statCard('violet',s.cards,'认知卡片','张沉淀')+
-    statCard('amber',s.reviews,'复盘次数','次回顾');
-  // 趋势折线
-  var max=Math.max(1,Math.max.apply(null,s.week.map(function(w){return w.n})));
-  var pts=s.week.map(function(w,i){return (14+i*(272/6))+','+(90-(w.n/max)*64)}).join(' ');
-  document.getElementById('chart-trend').innerHTML='<svg viewBox="0 0 300 108">'+
-    '<line x1="14" y1="90" x2="286" y2="90" stroke="#eef1f7" stroke-width="1"/>'+
-    '<line x1="14" y1="58" x2="286" y2="58" stroke="#eef1f7" stroke-width="1" stroke-dasharray="3 3"/>'+
-    '<line x1="14" y1="26" x2="286" y2="26" stroke="#eef1f7" stroke-width="1" stroke-dasharray="3 3"/>'+
-    '<polyline points="'+pts+'" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
-    s.week.map(function(w,i){return '<circle cx="'+(14+i*(272/6))+'" cy="'+(90-(w.n/max)*64)+'" r="3.2" fill="#2563eb"/>'}).join('')+
-    s.week.map(function(w,i){return '<text x="'+(14+i*(272/6))+'" y="104" text-anchor="middle" font-size="8.5" fill="#93a0b5">'+w.d.slice(5)+'</text>'}).join('')+
-    '</svg><div class="legend"><span><i style="background:#2563eb"></i>每日新增（信息+卡片）</span></div>';
-  // 类型分布柱状
-  var counts=Object.keys(TYPES).map(function(k){return {k:k,n:state.items.filter(function(i){return i.type===k}).length}});
-  var mx=Math.max(1,Math.max.apply(null,counts.map(function(c){return c.n})));
-  document.getElementById('chart-type').innerHTML='<svg viewBox="0 0 300 140">'+
-    counts.map(function(c,i){var h=(c.n/mx)*82;var x=18+i*56;return '<rect x="'+x+'" y="'+(96-h)+'" width="30" height="'+h+'" rx="5" fill="var(--'+(TYPES[c.k].color)+')" opacity="0.85"/>'+
-      '<text x="'+(x+15)+'" y="'+(92-h)+'" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1e293b">'+c.n+'</text>'+
-      '<text x="'+(x+15)+'" y="114" text-anchor="middle" font-size="9" fill="#5b667a">'+TYPES[c.k].label.slice(0,4)+'</text>'}).join('')+
-    '<line x1="10" y1="96" x2="292" y2="96" stroke="#eef1f7"/></svg>';
-  // 复盘记录
-  var box=document.getElementById('review-list');
-  if(!state.reviews.length){box.innerHTML='<div class="empty">还没有复盘记录</div>';return}
-  box.innerHTML=state.reviews.slice().sort(function(a,b){return String(b.date).localeCompare(String(a.date))}).map(function(r){
-    return '<div class="review-item"><div class="rd">'+esc(r.date)+' 复盘'+
-      '<button class="icon-btn" style="float:right;margin-top:-6px" data-action="edit-review" data-id="'+r.id+'">'+svg('M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z')+'</button></div>'+
-      (r.good?'<p><b>收获：</b>'+esc(r.good)+'</p>':'')+
-      (r.bad?'<p><b>不足：</b>'+esc(r.bad)+'</p>':'')+
-      (r.next?'<p><b>下一步：</b>'+esc(r.next)+'</p>':'')+'</div>';
-  }).join('');
-}
-function statCard(color,n,label,d){
-  return '<div class="stat '+color+'"><div class="n">'+n+'</div><div class="l">'+label+'</div><div class="d muted">'+d+'</div></div>';
 }
 
-/* ---------- 统一刷新入口（单向调度） ---------- */
-function refreshAll(){
-  renderBrand();renderBackupHint();
-  renderToday();renderRecs();renderProgress();renderProfileStrip();
-  renderFeed();renderKnowledge();renderReview();
+/* ================= 渲染层：我的画像 ================= */
+function renderProfile(){
+  var p=state.profile;
+  document.getElementById('pf-industry').value=p.industry||'';
+  document.getElementById('pf-role').value=p.role||'';
+  document.getElementById('pf-goal').value=p.goal||'';
+  document.getElementById('pf-focus').value=(p.focus||[]).join(', ');
+  setPref('pref-depth',p.depth);setPref('pref-pace',p.pace);
+  var focusTxt=(p.focus||[]).map(function(t){return esc(t)}).join('、')||'未设置';
+  document.getElementById('profile-explain').innerHTML='<b>画像如何影响推荐</b>你的关注领域（'+focusTxt+
+    '）会为命中的简报加分；每次点"有用 / 深读 / 无关"，系统都会调整对应领域的权重，让后续排序越来越贴合你。你可以在下方看到学到的权重。';
+  // 学到的权重
+  var w=state.tagWeights||{};var keys=Object.keys(w).filter(function(k){return w[k]!==0}).sort(function(a,b){return Math.abs(w[b])-Math.abs(w[a])});
+  var box=document.getElementById('learned-prefs');
+  if(!keys.length){box.innerHTML='<div style="font-size:13px;color:var(--ink3)">还没有反馈数据。在简报卡片上点"有用 / 深读 / 无关"，这里会显示系统学到的偏好权重。</div>';return}
+  box.innerHTML=keys.map(function(t){
+    var v=w[t],pos=v>0;
+    return '<div class="bar-row"><span class="lbl">'+esc(t)+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.min(100,Math.abs(v)*12)+'%;background:'+(pos?'var(--green)':'var(--rose)')+'"></div></div><span class="v" style="color:'+(pos?'var(--green)':'var(--rose)')+'">'+(pos?'+':'')+v+'</span></div>';
+  }).join('')+'<div class="learn-note">绿色 = 你偏好该领域（推荐加权）；红色 = 你表示不感兴趣（推荐降权）。权重实时影响简报排序。</div>';
+}
+function setPref(id,val){var els=document.querySelectorAll('#'+id+' .pref-opt');for(var i=0;i<els.length;i++)els[i].classList.toggle('on',els[i].getAttribute('data-v')===val)}
+
+/* ================= 渲染层：闭环复盘 ================= */
+function renderReview(){
+  var b=state.briefs;
+  var deep=fbCount('deep'),useful=fbCount('useful'),irr=fbCount('irrelevant'),neu=fbCount('neutral');
+  var mastered=state.concepts.filter(function(c){return c.mastered}).length;
+  document.getElementById('stat-row').innerHTML=
+    stat(state.briefs.length,'简报总数')+stat(deep+useful,'正向反馈')+stat(mastered+'/'+state.concepts.length,'已掌握概念')+stat(state.feedbackLog.length,'互动记录');
+
+  var total=deep+useful+neu+irr;
+  var chart=document.getElementById('feedback-chart');
+  if(!total){chart.innerHTML='<div style="font-size:13px;color:var(--ink3)">暂无反馈数据。你的每一次"有用 / 深读 / 无感 / 无关"都会记录在这里，并形成推荐闭环。</div>'}
+  else{
+    var rows=[['深读',deep,'var(--blue)'],['有用',useful,'var(--green)'],['一般',neu,'var(--amber)'],['无关',irr,'var(--rose)']];
+    chart.innerHTML=rows.map(function(r){return '<div class="bar-row"><span class="lbl">'+r[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+(r[1]/total*100)+'%;background:'+r[2]+'"></div></div><span class="v">'+r[1]+'</span></div>'}).join('');
+  }
+
+  var supplyDays=Math.max(1,Math.ceil((new Date(today())-new Date(state.meta.createdAt))/86400000));
+  document.getElementById('loop-status').innerHTML=
+    '<div style="font-size:13.2px;line-height:1.9">'+
+    '<div>① <b>跟进</b>：简报按日/周更新，'+state.briefs.length+' 条供稿附来源与可信度</div>'+
+    '<div>② <b>总结</b>：每条含一句话结论 + 关键发现 + 潜在影响 + 可执行建议</div>'+
+    '<div>③ <b>反馈</b>：'+(total?'已记录 '+total+' 次互动':'尚未记录反馈')+'，系统据此调整 '+Object.keys(state.tagWeights).filter(function(k){return state.tagWeights[k]}).length+' 个领域权重</div>'+
+    '<div>④ <b>推荐</b>：相关度分数实时重算，排序随你的偏好变化</div>'+
+    '</div><div class="learn-note">当前画像：'+(state.profile.industry||'未设置')+' · '+(state.profile.role||'未设置')+'。闭环已运行 '+supplyDays+' 天。</div>';
+}
+function stat(n,l){return '<div class="stat"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>'}
+
+function refreshAll(){renderHeader();renderBriefs();renderKnowledge();renderProfile();renderReview()}
+
+/* ================= 事件实现 ================= */
+var pendingCF=null;
+function askCF(title,msg,fn){document.getElementById('cf-title').textContent=title;document.getElementById('cf-msg').textContent=msg;pendingCF=fn;document.getElementById('confirm-overlay').classList.add('show')}
+function closeCF(){pendingCF=null;document.getElementById('confirm-overlay').classList.remove('show')}
+
+function onAction(a,el,ds){
+  if(a==='pref'){
+    var g=ds.group,v=ds.val;
+    if(g==='pref-depth')state.profile.depth=v;else if(g==='pref-pace')state.profile.pace=v;
+    save();renderProfile();toast('偏好已更新');
+  }
+  else if(a==='master'){
+    var id=ds.id;state.concepts.forEach(function(c){if(c.id===id)c.mastered=!c.mastered});
+    save();renderKnowledge();renderReview();
+  }
+  else if(a==='note'){
+    var box=document.getElementById('note-'+ds.id);if(box)box.classList.toggle('show');
+  }
+  else if(a==='save-profile'){
+    var f=el;
+    state.profile={
+      industry:f.elements.industry.value.trim(),role:f.elements.role.value.trim(),
+      goal:f.elements.goal.value.trim(),focus:parseTags(f.elements.focus.value),
+      depth:state.profile.depth,pace:state.profile.pace
+    };
+    save();refreshAll();toast('画像已保存，推荐已重算');
+  }
+  else if(a==='export'){
+    var payload={_app:'行业认知简报系统',_version:2,_exportAt:new Date().toISOString(),data:state};
+    var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+    var url=URL.createObjectURL(blob),link=document.createElement('a');
+    link.href=url;link.download='行业认知简报备份_'+today()+'.json';document.body.appendChild(link);link.click();document.body.removeChild(link);
+    setTimeout(function(){URL.revokeObjectURL(url)},1200);toast('备份已导出');
+  }
+  else if(a==='import'){document.getElementById('import-file').click()}
+  else if(a==='import-file'){
+    var file=el.files&&el.files[0];if(!file)return;var r=new FileReader();
+    r.onload=function(){var p;try{p=JSON.parse(r.result)}catch(e){toast('不是有效 JSON');return}
+      var d=p&&p.data?p.data:p;if(!d||!Array.isArray(d.briefs)){toast('备份格式不匹配');return}
+      askCF('导入备份','将用备份覆盖当前全部数据，确定继续吗？',function(){state=d;shape();save();refreshAll();toast('导入成功')});
+      el.value='';
+    };r.readAsText(file,'utf-8');
+  }
+  else if(a==='cf-cancel'){closeCF()}
+  else if(a==='cf-ok'){var fn=pendingCF;closeCF();if(fn)fn()}
 }
 
-/* ================= 交互层：Tab 切换 ================= */
-function onTab(key){
-  var tabs=document.querySelectorAll('[data-tab]');
-  for(var i=0;i<tabs.length;i++)tabs[i].classList.toggle('active',tabs[i].getAttribute('data-tab')===key);
-  var views=document.querySelectorAll('.view');
-  for(var j=0;j<views.length;j++)views[j].classList.toggle('active',views[j].id==='view-'+key);
+/* 笔记自动保存（失焦） */
+document.addEventListener('focusout',function(e){
+  if(e.target&&e.target.getAttribute&&e.target.getAttribute('data-notefield')){
+    var id=e.target.getAttribute('data-notefield');
+    state.briefs.forEach(function(b){if(b.id===id)b.note=e.target.value});
+    save();
+  }
+});
+
+/* 事件委托 */
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-tab]');if(t){switchTab(t.getAttribute('data-tab'));return}
+  var h=e.target.closest('[data-horizon]');if(h){state.ui.horizon=h.getAttribute('data-horizon');save();renderBriefs();return}
+  var k=e.target.closest('[data-kb]');if(k){state.ui.kb=k.getAttribute('data-kb');save();renderKnowledge();return}
+  var po=e.target.closest('.pref-opt');if(po){onAction('pref',po,{group:po.parentNode.id,val:po.getAttribute('data-v')});return}
+  var a=e.target.closest('[data-action]');if(a){onAction(a.getAttribute('data-action'),a,a.dataset);return}
+  var fb=e.target.closest('[data-fb]');if(fb){applyFeedback(fb.getAttribute('data-fb'),fb.getAttribute('data-act'));return}
+  var m=e.target.closest('[data-master]');if(m){onAction('master',m,{id:m.getAttribute('data-master')});return}
+  var nt=e.target.closest('[data-note]');if(nt){onAction('note',nt,{id:nt.getAttribute('data-note')});return}
+});
+document.addEventListener('submit',function(e){if(e.target.id==='profile-form'){e.preventDefault();onAction('save-profile',e.target,{})}});
+document.addEventListener('input',function(e){if(e.target.id==='pf-goal'||e.target.id==='pf-focus')return});
+document.getElementById('confirm-overlay').addEventListener('click',function(e){if(e.target===this)onAction('cf-cancel')});
+document.getElementById('import-file').addEventListener('change',function(){onAction('import-file',this,{})});
+
+function switchTab(key){
+  state.ui.tab=key;save();
+  var tabs=document.querySelectorAll('[data-tab]');for(var i=0;i<tabs.length;i++)tabs[i].classList.toggle('active',tabs[i].getAttribute('data-tab')===key);
+  var views=document.querySelectorAll('.view');for(var j=0;j<views.length;j++)views[j].classList.toggle('active',views[j].id==='view-'+key);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function onKbTab(key){state.ui.kbTab=key;save();renderKnowledge()}
-
-/* ================= 交互层：确认弹窗 ================= */
-var pendingConfirm=null;
-function askConfirm(title,msg,fn){
-  document.getElementById('confirm-title').textContent=title;
-  document.getElementById('confirm-msg').textContent=msg;
-  pendingConfirm=fn;
-  document.getElementById('confirm-overlay').classList.add('show');
-}
-function closeConfirm(){pendingConfirm=null;document.getElementById('confirm-overlay').classList.remove('show')}
-
-/* ================= 交互层：编辑器 ================= */
-var SCHEMAS={
-  item:{title:'信息条目',fields:[
-    {k:'type',l:'类型',t:'select',opts:Object.keys(TYPES).map(function(k){return [k,TYPES[k].label]})},
-    {k:'title',l:'标题',t:'text',req:true,ph:'这条信息的标题'},
-    {k:'summary',l:'摘要 / 内容',t:'textarea',ph:'核心观点、关键信息…'},
-    {k:'url',l:'原文链接',t:'text',ph:'https://…'},
-    {k:'tags',l:'标签（逗号分隔）',t:'text',ph:'脑机接口, 卒中康复'},
-    {k:'source',l:'来源',t:'text',ph:'期刊 / 公众号 / 会议'},
-    {k:'status',l:'阅读状态',t:'select',opts:[['unread','待读'],['reading','在读'],['read','已读']]},
-    {k:'dueDate',l:'计划处理日期',t:'date'},
-    {k:'starred',l:'标为重点',t:'check'}
-  ]},
-  card:{title:'认知卡片',fields:[
-    {k:'q',l:'问题 / 概念',t:'textarea',req:true,ph:'用一个问题或概念命名这张卡片'},
-    {k:'a',l:'答案 / 我的理解',t:'textarea',ph:'用自己的话写下答案，印象更深'},
-    {k:'tags',l:'标签（逗号分隔）',t:'text'},
-    {k:'source',l:'来源',t:'text'}
-  ]},
-  review:{title:'复盘记录',fields:[
-    {k:'date',l:'日期',t:'date',req:true},
-    {k:'good',l:'今天的收获',t:'textarea'},
-    {k:'bad',l:'不足 / 卡点',t:'textarea'},
-    {k:'next',l:'下一步行动',t:'textarea'}
-  ]}
-};
-var editorMeta={kind:'',id:''};
-function openEditor(kind,id){
-  var schema=SCHEMAS[kind];if(!schema)return;
-  editorMeta={kind:kind,id:id||''};
-  var val=null;
-  if(id){
-    var arr=kind==='item'?state.items:(kind==='card'?state.cards:state.reviews);
-    for(var i=0;i<arr.length;i++)if(arr[i].id===id){val=arr[i];break}
-  }
-  var d=val||defaultFor(kind);
-  document.getElementById('editor-title').textContent=(id?'编辑':'新建')+schema.title;
-  document.getElementById('editor-fields').innerHTML=schema.fields.map(function(f){
-    var v=d[f.k]!==undefined?d[f.k]:'';
-    var label='<label>'+esc(f.l)+(f.req?' *':'')+'</label>';
-    if(f.t==='textarea')return '<div class="field">'+label+'<textarea name="'+f.k+'" '+(f.ph?'placeholder="'+esc(f.ph)+'"':'')+'>'+esc(v)+'</textarea></div>';
-    if(f.t==='select')return '<div class="field">'+label+'<select name="'+f.k+'">'+f.opts.map(function(o){return '<option value="'+o[0]+'" '+(String(v)===o[0]?'selected':'')+'>'+esc(o[1])+'</option>'}).join('')+'</select></div>';
-    if(f.t==='check')return '<div class="field"><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" name="'+f.k+'" '+(v?'checked':'')+' style="width:20px;min-height:20px"> '+esc(f.l)+'</label></div>';
-    var ft=f.t==='date'?'date':'text';
-    return '<div class="field">'+label+'<input type="'+ft+'" name="'+f.k+'" value="'+esc(v)+'" '+(f.ph?'placeholder="'+esc(f.ph)+'"':'')+'></div>';
-  }).join('');
-  document.getElementById('editor-delete').style.display=id?'block':'none';
-  document.getElementById('editor-overlay').classList.add('show');
-}
-function defaultFor(kind){
-  if(kind==='item')return {type:'article',title:'',summary:'',url:'',tags:[],source:'',status:'unread',dueDate:today(),starred:false};
-  if(kind==='card')return {q:'',a:'',tags:[],source:''};
-  return {date:today(),good:'',bad:'',next:''};
-}
-function closeEditor(){document.getElementById('editor-overlay').classList.remove('show')}
-function saveEditor(form){
-  var kind=editorMeta.kind,schema=SCHEMAS[kind],obj={};
-  schema.fields.forEach(function(f){
-    var el=form.elements[f.k];if(!el)return;
-    if(f.t==='check')obj[f.k]=el.checked;
-    else if(f.k==='tags')obj[f.k]=parseTags(el.value);
-    else obj[f.k]=el.value.trim();
-  });
-  var req=schema.fields.filter(function(f){return f.req});
-  for(var i=0;i<req.length;i++){if(!obj[req[i].k]){toast('请填写：'+req[i].l);return}}
-  var arr=kind==='item'?state.items:(kind==='card'?state.cards:state.reviews);
-  if(editorMeta.id){
-    for(var j=0;j<arr.length;j++)if(arr[j].id===editorMeta.id){
-      var old=arr[j];
-      for(var k in obj)old[k]=obj[k];
-      if(kind==='item'&&old.status==='read'&&!old.readAt)old.readAt=today();
-      break;
-    }
-  }else{
-    obj.id=uid();obj.createdAt=today();
-    if(kind==='card'){obj.reviews=0;obj.lastReview=''}
-    arr.unshift(obj);
-  }
-  save();closeEditor();refreshAll();toast('已保存');
-}
-function deleteEditor(){
-  var id=editorMeta.id,kind=editorMeta.kind;if(!id)return;
-  askConfirm('删除确认','确定删除这条内容吗？此操作不可撤销。',function(){
-    if(kind==='item')state.items=state.items.filter(function(x){return x.id!==id});
-    else if(kind==='card')state.cards=state.cards.filter(function(x){return x.id!==id});
-    else state.reviews=state.reviews.filter(function(x){return x.id!==id});
-    save();closeEditor();refreshAll();toast('已删除');
-  });
-}
-
-/* ================= 交互层：导入导出 ================= */
-function exportJSON(){
-  var payload={_app:'行业认知提升工作台',_version:1,_exportAt:new Date().toISOString(),data:state};
-  var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
-  var url=URL.createObjectURL(blob),a=document.createElement('a');
-  a.href=url;a.download='行业认知工作台备份_'+today()+'.json';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
-  setTimeout(function(){URL.revokeObjectURL(url)},1500);
-  toast('备份已导出');
-}
-function handleImportFile(input){
-  var file=input.files[0];if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(){
-    var parsed;
-    try{parsed=JSON.parse(reader.result)}catch(e){toast('文件不是有效的 JSON');input.value='';return}
-    var data=parsed&&parsed.data?parsed.data:parsed;
-    if(!data||!Array.isArray(data.items)||!Array.isArray(data.cards)){toast('备份格式不匹配');input.value='';return}
-    askConfirm('导入恢复','将用备份覆盖当前全部数据（'+data.items.length+' 条信息 / '+data.cards.length+' 张卡片），确定继续吗？',function(){
-      state=data;ensureShape();save();refreshAll();toast('导入成功');
-    });
-    input.value='';
-  };
-  reader.readAsText(file,'utf-8');
-}
-
-/* ================= 交互层：设置 ================= */
-function openSettings(){
-  var p=state.profile;
-  document.getElementById('set-industry').value=p.industry||'';
-  document.getElementById('set-role').value=p.role||'';
-  document.getElementById('set-focus').value=(p.focus||[]).join(', ');
-  document.getElementById('set-goal').value=p.goal||'';
-  document.getElementById('set-dailyCount').value=p.dailyCount||3;
-  document.getElementById('set-reviewCycle').value=p.reviewCycle||'daily';
-  var form=document.getElementById('settings-form');
-  if(!document.getElementById('clear-data-btn')){
-    var btn=document.createElement('button');
-    btn.type='button';btn.id='clear-data-btn';btn.className='btn btn-danger btn-block btn-sm';
-    btn.setAttribute('data-action','clear-data');btn.style.marginTop='14px';btn.textContent='清空全部数据';
-    form.appendChild(btn);
-  }
-  document.getElementById('settings-overlay').classList.add('show');
-}
-function closeSettings(){document.getElementById('settings-overlay').classList.remove('show')}
-function saveSettings(form){
-  state.profile={
-    industry:form.elements.industry.value.trim(),
-    role:form.elements.role.value.trim(),
-    focus:parseTags(form.elements.focus.value),
-    goal:form.elements.goal.value.trim(),
-    dailyCount:Math.max(1,Math.min(8,parseInt(form.elements.dailyCount.value,10)||3)),
-    reviewCycle:form.elements.reviewCycle.value
-  };
-  save();closeSettings();refreshAll();toast('设置已保存');
-}
-function clearData(){
-  askConfirm('⚠️ 危险操作','将清空全部信息、卡片与复盘记录，且无法撤销。建议先导出备份。确定清空吗？',function(){
-    var d=seed();
-    state.items=[];state.cards=[];state.reviews=[];state.ui.recSeed=0;
-    save();closeSettings();refreshAll();toast('已清空，页面已重置为空状态');
-  });
-}
-
-/* ================= 交互层：动作分发 ================= */
-function onAction(action,el,ds){
-  var id=ds&&ds.id;
-  var item=id?findById(state.items,id):null;
-  var card=id?findById(state.cards,id):null;
-  switch(action){
-    case 'export-json': exportJSON();break;
-    case 'import-json': document.getElementById('import-file').click();break;
-    case 'import-file': handleImportFile(el);break;
-    case 'open-settings': openSettings();break;
-    case 'close-settings': closeSettings();break;
-    case 'save-settings': saveSettings(el);break;
-    case 'clear-data': clearData();break;
-    case 'close-editor': closeEditor();break;
-    case 'save-editor': saveEditor(el);break;
-    case 'editor-delete': deleteEditor();break;
-    case 'confirm-cancel': closeConfirm();break;
-    case 'confirm-ok': var fn=pendingConfirm;closeConfirm();if(fn)fn();break;
-    case 'refresh-recs': state.ui.recSeed=(state.ui.recSeed||0)+1;save();renderRecs();break;
-    case 'item-done':
-      if(item){item.status='read';item.readAt=today();save();refreshAll();toast('已标记已读')}
-      break;
-    case 'view-item': if(item)openEditor('item',item.id);break;
-    case 'edit-item': if(item)openEditor('item',item.id);break;
-    case 'new-item': case 'quick-add': openEditor('item','');break;
-    case 'edit-card': if(card)openEditor('card',card.id);break;
-    case 'new-card': openEditor('card','');break;
-    case 'flip-card': var fc=el.closest('.flashcard');if(fc)fc.classList.toggle('open');break;
-    case 'review-card':
-      if(card){card.reviews=(card.reviews||0)+1;card.lastReview=today();save();refreshAll();toast('复习 +1')}
-      break;
-    case 'card-from-item':
-      if(item){
-        state.cards.unshift({id:uid(),q:item.title,a:item.summary||'',tags:(item.tags||[]).slice(),source:'来自信息流',reviews:0,lastReview:'',createdAt:today()});
-        save();refreshAll();toast('已存入认知卡片');
-      }
-      break;
-    case 'new-review': openEditor('review','');break;
-    case 'edit-review': var rv=findById(state.reviews,id);if(rv)openEditor('review',rv.id);break;
-    case 'tag-filter':
-      window._feedSelTag=ds.tag||'';
-      onTab('feed');renderFeed();
-      break;
-    default: break;
-  }
-}
-function findById(arr,id){for(var i=0;i<arr.length;i++)if(arr[i].id===id)return arr[i];return null}
-
-/* ESC 关闭浮层 */
-document.addEventListener('keydown',function(e){
-  if(e.key!=='Escape')return;
-  closeConfirm();closeEditor();closeSettings();
-});
-
-/* ---------- 事件委托 ---------- */
-document.addEventListener('click',function(e){
-  var tabEl=e.target.closest('[data-tab]');if(tabEl){onTab(tabEl.getAttribute('data-tab'));return}
-  var kbEl=e.target.closest('[data-kb]');if(kbEl){onKbTab(kbEl.getAttribute('data-kb'));return}
-  var actEl=e.target.closest('[data-action]');if(actEl){onAction(actEl.getAttribute('data-action'),actEl,actEl.dataset);return}
-  var tagEl=e.target.closest('[data-tag]');if(tagEl){onAction('tag-filter',tagEl,{tag:tagEl.getAttribute('data-tag')});return}
-});
-document.addEventListener('submit',function(e){
-  if(e.target.id==='settings-form'){e.preventDefault();onAction('save-settings',e.target,{});}
-  else if(e.target.id==='editor-form'){e.preventDefault();onAction('save-editor',e.target,{});}
-});
-document.addEventListener('change',function(e){
-  if(e.target.id==='feed-type'||e.target.id==='feed-status'){renderFeed()}
-  if(e.target.id==='import-file'&&e.target.files&&e.target.files[0]){onAction('import-file',e.target,{})}
-});
-document.addEventListener('input',function(e){if(e.target.id==='feed-search'){renderFeed()}});
-document.getElementById('settings-overlay').addEventListener('click',function(e){if(e.target===this)onAction('close-settings')});
-document.getElementById('editor-overlay').addEventListener('click',function(e){if(e.target===this)onAction('close-editor')});
-document.getElementById('confirm-overlay').addEventListener('click',function(e){if(e.target===this)onAction('confirm-cancel')});
-
-/* ---------- 初始化 ---------- */
 function init(){
   load();
-  state.meta.lastOpen=today();save();
-  var t=today(),wd=['日','一','二','三','四','五','六'][new Date().getDay()];
-  var dt=document.getElementById('today-date');if(dt)dt.textContent=t+' 星期'+wd;
+  var d=new Date(),wd=['日','一','二','三','四','五','六'][d.getDay()];
+  document.getElementById('pill-date').textContent=(d.getMonth()+1)+'月'+d.getDate()+'日 周'+wd;
+  document.getElementById('footnote').textContent='简报内容供稿：'+state.meta.lastSupply+' · 数据仅存本地浏览器 · 建议定期导出备份';
   refreshAll();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-
 })();
 </script>
 </body>
